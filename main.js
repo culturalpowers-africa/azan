@@ -6,8 +6,13 @@ import portraitImage from './images/heritage-portrait.jpg';
 import ritualImage from './images/heritage-ritual.jpg';
 
 const BASE_PREFIX = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
-const routeHref = (path) => `${BASE_PREFIX}${path}`;
-const stripBase = (path) => (BASE_PREFIX && path.startsWith(BASE_PREFIX) ? path.slice(BASE_PREFIX.length) || '/' : path);
+const hasBasePrefix = (path) => BASE_PREFIX && BASE_PREFIX !== '/' && (path === BASE_PREFIX || path.startsWith(`${BASE_PREFIX}/`));
+const routeHref = (path) => {
+  const normalized = path.startsWith('/') ? path : `/${path}`;
+  if (hasBasePrefix(normalized)) return normalized;
+  return `${BASE_PREFIX}${normalized}`;
+};
+const stripBase = (path) => (hasBasePrefix(path) ? path.slice(BASE_PREFIX.length) || '/' : path);
 const contentModules = import.meta.glob('./content/pages/**/*.json', { eager: true, query: '?json', import: 'default' });
 const contentPages = Object.values(contentModules);
 const main = document.querySelector('#main-content');
