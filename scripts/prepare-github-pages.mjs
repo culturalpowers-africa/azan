@@ -3,7 +3,13 @@ import { dirname, join } from 'node:path';
 
 const distRoot = 'dist';
 const manifest = JSON.parse(await readFile(join(distRoot, 'manus-routes.json'), 'utf8'));
-const shell = await readFile(join(distRoot, 'index.html'), 'utf8');
+const basePath = (process.env.VITE_BASE_PATH || '/').replace(/\/$/, '') || '/';
+const publicPrefix = basePath === '/' ? '/' : `${basePath}/`;
+const baseSegment = basePath.replace(/^\//, '');
+const shell = (await readFile(join(distRoot, 'index.html'), 'utf8')).replace(/(href|src)="\/([^"]*)"/g, (match, attribute, path) => {
+  if (basePath !== '/' && (path === baseSegment || path.startsWith(`${baseSegment}/`))) return match;
+  return `${attribute}="${publicPrefix}${path}"`;
+});
 const origin = (process.env.SITE_ORIGIN || 'https://culturalpowers-africa.github.io/azan').replace(/\/$/, '');
 
 const escapeHtml = (value) => String(value)
