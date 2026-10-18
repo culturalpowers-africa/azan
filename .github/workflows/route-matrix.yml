@@ -16,7 +16,7 @@ jobs:
         path: ['/', '/guidance', '/dreams', '/approach', '/contact', '/about', '/journal', '/resources', '/faq', '/pricing', '/privacy', '/terms', '/accessibility', '/community', '/services/dreams', '/services/love', '/services/protection', '/services/prosperity', '/services/ancestors', '/about/method', '/about/practitioner', '/about/values', '/community/events', '/community/stories', '/contact/booking', '/contact/contact-faq', '/contact/whatsapp', '/journal/ancestral-memory', '/journal/grounding-at-home', '/journal/prosperity-with-purpose', '/journal/relationship-boundaries', '/journal/understanding-dream-symbols', '/services/ancestors/lineage', '/services/dreams/follow-up', '/services/dreams/what-to-bring', '/services/love/communication', '/services/love/family', '/services/prosperity/business', '/services/protection/grounding', '/services/protection/home']
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version: 20
           cache: npm
