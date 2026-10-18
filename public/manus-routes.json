@@ -1,5 +1,14 @@
 {
   "routes": [
-    { "path": "/", "title": "Ancestral Path — Dream Interpretation & Spiritual Guidance" }
+    { "path": "/", "title": "Ancestral Path — Home" },
+    { "path": "/guidance", "title": "Ancestral Path — Guidance" },
+    { "path": "/dreams", "title": "Ancestral Path — Dream Interpretation" },
+    { "path": "/approach", "title": "Ancestral Path — Our Approach" },
+    { "path": "/contact", "title": "Ancestral Path — Contact" },
+    { "path": "/services/dreams", "title": "Ancestral Path — Dream Interpretation Service" },
+    { "path": "/services/love", "title": "Ancestral Path — Love & Relationship Guidance" },
+    { "path": "/services/protection", "title": "Ancestral Path — Protection & Clearing" },
+    { "path": "/services/prosperity", "title": "Ancestral Path — Prosperity & Purpose" },
+    { "path": "/services/ancestors", "title": "Ancestral Path — Ancestral Connection" }
   ]
 }
