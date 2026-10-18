@@ -122,7 +122,7 @@ const detailPage = (key) => {
   </section>`;
 };
 
-const guidancePage = () => `<section class="route-page services-hub"><div class="route-intro"><a class="back-link" href="/">← Home</a><p class="eyebrow">PRIVATE SPIRITUAL GUIDANCE</p><h1>Choose the question<br /><em>that is calling you.</em></h1><p>Browse the full catalogue, filter by what you are carrying, and choose a conversation that keeps your agency at the centre.</p></div><div class="services-hub-layout"><div class="catalog-panel"><div class="catalog-toolbar" role="toolbar" aria-label="Filter services"><button class="filter-chip is-active" type="button" data-catalog-filter="All" aria-pressed="true">All <span>${serviceCatalog.length}</span></button>${['Reflection','Relationships','Ancestral work','Purpose','Grounding'].map((category) => `<button class="filter-chip" type="button" data-catalog-filter="${category}" aria-pressed="false">${category} <span>${serviceCatalog.filter((item) => item.category === category).length}</span></button>`).join('')}</div><p class="catalog-status" data-catalog-status role="status" aria-live="polite"></p><div class="catalog-grid">${serviceCatalog.map(serviceCatalogCard).join('')}</div><p class="catalog-empty" data-catalog-empty hidden>No pathways match that filter. Return to “All” to see the full catalogue.</p></div><aside class="campaign-panel"><img src="${campaignFlyer}" alt="Campaign artwork supplied by Ancestral Path featuring dream interpretation and a WhatsApp contact number" loading="lazy" /><div><p class="eyebrow">CAMPAIGN ARTWORK</p><h2>Start with the question you can say out loud.</h2><p>Bring only what feels comfortable. This is a reflective service, not a promise to control another person or guarantee an outcome.</p><a class="gold-button inline-button" href="/contact">Start a private conversation <span aria-hidden="true">↗</span></a></div></aside></div><div class="route-callout"><p class="eyebrow">A NOTE ON CARE</p><h2>You stay in charge of your story.</h2><p>We will never tell you that you are doomed, demand urgent payment, or replace medical, legal, or mental-health care with spiritual language.</p><a class="outline-button" href="/contact">Ask a question <span>→</span></a></div></section>`;
+const guidancePage = () => `<section class="route-page services-hub"><div class="route-intro"><a class="back-link" href="/">← Home</a><p class="eyebrow">PRIVATE SPIRITUAL GUIDANCE</p><h1>Choose the question<br /><em>that is calling you.</em></h1><p>Browse the full catalogue and choose a conversation that keeps your cultural context and agency at the centre.</p></div><div class="services-hub-layout"><div class="catalog-panel"><p class="catalog-status">14 cultural service pathways · choose the one that speaks to your question</p><div class="catalog-grid">${serviceCatalog.map(serviceCatalogCard).join('')}</div></div><aside class="campaign-panel"><img src="${campaignFlyer}" alt="Campaign artwork supplied by Ancestral Path featuring dream interpretation and a WhatsApp contact number" loading="lazy" /><div><p class="eyebrow">CAMPAIGN ARTWORK</p><h2>Start with the question you can say out loud.</h2><p>Bring only what feels comfortable. This is a reflective service, not a promise to control another person or guarantee an outcome.</p><a class="gold-button inline-button" href="/contact">Start a private conversation <span aria-hidden="true">↗</span></a></div></aside></div><div class="route-callout"><p class="eyebrow">A NOTE ON CARE</p><h2>You stay in charge of your story.</h2><p>We will never tell you that you are doomed, demand urgent payment, or replace medical, legal, or mental-health care with spiritual language.</p><a class="outline-button" href="/contact">Ask a question <span>→</span></a></div></section>`;
 
 const dreamsPage = () => `<section class="route-page editorial-route"><div class="route-intro"><a class="back-link" href="/">← Home</a><p class="eyebrow">THE LANGUAGE OF NIGHT</p><h1>Dreams leave clues<br /><em>in the morning.</em></h1><p>Start with the dream you remember most clearly. A dream reading gives you a grounded way to explore symbols, emotion, memory, and the choices waiting underneath.</p></div><div class="dream-feature" style="background-image:linear-gradient(90deg, rgba(8,9,9,.92), rgba(8,9,9,.3)), url('${assets.dreams}')"><div><p class="eyebrow">DREAM INTERPRETATION SESSION</p><h2>Bring the image<br />that stayed with you.</h2><a class="gold-button inline-button" href="/contact?topic=dreams">Book a dream conversation <span>↗</span></a></div></div><div class="three-column-notes"><div><span>01</span><h3>Remember</h3><p>Write down the scene, feeling, people, colors, and what happened immediately before waking.</p></div><div><span>02</span><h3>Explore</h3><p>We look for personal meaning rather than applying a one-size-fits-all dream dictionary.</p></div><div><span>03</span><h3>Carry forward</h3><p>Leave with a question or next step you can bring into your everyday life.</p></div></div></section>`;
 
@@ -222,30 +222,6 @@ themeToggle?.addEventListener('click', () => {
   try { localStorage.setItem('azan-theme', next); } catch {}
 });
 
-const bindCatalogFilters = () => {
-  const buttons = [...document.querySelectorAll('[data-catalog-filter]')];
-  if (!buttons.length) return;
-  const cards = [...document.querySelectorAll('[data-catalog-card]')];
-  const status = document.querySelector('[data-catalog-status]');
-  const empty = document.querySelector('[data-catalog-empty]');
-  const update = (category) => {
-    const visible = cards.filter((card) => {
-      const matches = category === 'All' || card.dataset.category === category;
-      card.hidden = !matches;
-      return matches;
-    });
-    buttons.forEach((button) => {
-      const active = button.dataset.catalogFilter === category;
-      button.classList.toggle('is-active', active);
-      button.setAttribute('aria-pressed', String(active));
-    });
-    if (status) status.textContent = `${visible.length} ${visible.length === 1 ? 'service' : 'services'} shown`;
-    if (empty) empty.hidden = visible.length > 0;
-  };
-  buttons.forEach((button) => button.addEventListener('click', () => update(button.dataset.catalogFilter)));
-  update('All');
-};
-
 const bindInquiryForms = () => {
   document.querySelectorAll('[data-inquiry-form]').forEach((inquiryForm) => {
     const requestedTopic = new URLSearchParams(window.location.search).get('topic');
@@ -298,7 +274,6 @@ const renderRoute = (path, push = false) => {
   bindInquiryForms();
   bindHeroForm();
   bindLibrarySearch();
-  bindCatalogFilters();
   prepareMotionTargets();
   window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
   const heading = main?.querySelector('h1');
@@ -349,7 +324,6 @@ bindInquiryForms();
 bindHeroForm();
 normalizeInternalLinks();
 bindLibrarySearch();
-bindCatalogFilters();
 prepareMotionTargets();
 const initialPath = stripBase(window.location.pathname);
 if (initialPath !== '/') renderRoute(initialPath);
