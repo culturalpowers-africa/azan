@@ -9,10 +9,14 @@ const BASE_PREFIX = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
 const hasBasePrefix = (path) => BASE_PREFIX && BASE_PREFIX !== '/' && (path === BASE_PREFIX || path.startsWith(`${BASE_PREFIX}/`));
 const routeHref = (path) => {
   const normalized = path.startsWith('/') ? path : `/${path}`;
-  if (hasBasePrefix(normalized)) return normalized;
-  return `${BASE_PREFIX}${normalized}`;
+  const cleanPath = stripBase(normalized);
+  return `${BASE_PREFIX}${cleanPath}`;
 };
-const stripBase = (path) => (hasBasePrefix(path) ? path.slice(BASE_PREFIX.length) || '/' : path);
+const stripBase = (path) => {
+  let cleanPath = path;
+  while (hasBasePrefix(cleanPath)) cleanPath = cleanPath.slice(BASE_PREFIX.length) || '/';
+  return cleanPath;
+};
 const contentModules = import.meta.glob('./content/pages/**/*.json', { eager: true, query: '?json', import: 'default' });
 const contentPages = Object.values(contentModules);
 const main = document.querySelector('#main-content');
@@ -309,7 +313,13 @@ document.addEventListener('click', (event) => {
 
 modalClose?.addEventListener('click', closeModal);
 modal?.addEventListener('click', (event) => { if (event.target === modal) closeModal(); });
-window.addEventListener('popstate', () => renderRoute(stripBase(window.location.pathname)));
+const canonicalizeBrowserPath = () => {
+  const cleanPath = stripBase(window.location.pathname);
+  const canonicalPath = routeHref(cleanPath);
+  if (window.location.pathname !== canonicalPath) window.history.replaceState({}, '', `${canonicalPath}${window.location.search}${window.location.hash}`);
+  return cleanPath;
+};
+window.addEventListener('popstate', () => renderRoute(canonicalizeBrowserPath()));
 
 const bindHeroForm = () => document.querySelector('[data-hero-form]')?.addEventListener('submit', (event) => {
   event.preventDefault();
@@ -339,5 +349,5 @@ bindHeroForm();
 normalizeInternalLinks();
 bindLibrarySearch();
 prepareMotionTargets();
-const initialPath = stripBase(window.location.pathname);
+const initialPath = canonicalizeBrowserPath();
 if (initialPath !== '/') renderRoute(initialPath);
