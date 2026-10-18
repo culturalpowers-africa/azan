@@ -18,6 +18,8 @@ const modalClose = document.querySelector('[data-modal-close]');
 const announcer = document.querySelector('.route-announcer');
 const menuToggle = document.querySelector('.menu-toggle');
 const siteNav = document.querySelector('#primary-navigation');
+const themeToggle = document.querySelector('.theme-toggle');
+let modalTrigger = null;
 
 const assets = {
   dreams: ritualImage,
@@ -114,7 +116,7 @@ const genericPage = (page) => {
   const sections = page.sections.map((section, index) => `<article class="content-section-card"><span>${String(index + 1).padStart(2, '0')}</span><div><h2>${section.heading}</h2><p>${section.body}</p></div></article>`).join('');
   const related = (page.links || []).map((link) => `<a class="outline-button" href="${link.path}">${link.label} <span>→</span></a>`).join('');
   const faq = page.kind === 'faq' ? `<div class="faq-list">${page.sections.map((section) => `<details><summary>${section.heading}<span>＋</span></summary><p>${section.body}</p></details>`).join('')}</div>` : '';
-  const directory = page.kind === 'directory' ? `<div class="library-tools"><label for="library-search">Search the library</label><input id="library-search" data-library-search type="search" placeholder="Try dreams, home, relationships..." /></div><div class="library-grid">${contentPages.filter((item) => item.path !== '/resources').map((item) => `<a class="library-card" data-library-card href="${item.path}"><span>${item.eyebrow}</span><strong>${item.title}</strong><small>${item.intro}</small></a>`).join('')}</div>` : '';
+  const directory = page.kind === 'directory' ? `<div class="library-tools"><label for="library-search">Search the library</label><input id="library-search" data-library-search type="search" placeholder="Try dreams, home, relationships..." aria-describedby="library-results" /><p id="library-results" class="library-results" data-library-count role="status" aria-live="polite"></p></div><div class="library-empty" data-library-empty hidden>No pages match that search yet. Try a broader phrase.</div><div class="library-grid">${contentPages.filter((item) => item.path !== '/resources').map((item) => `<a class="library-card" data-library-card href="${item.path}"><span>${item.eyebrow}</span><strong>${item.title}</strong><small>${item.intro}</small></a>`).join('')}</div>` : '';
   return `<section class="route-page content-page"><div class="content-hero" style="background-image:linear-gradient(90deg, rgba(8,9,9,.96), rgba(8,9,9,.57) 58%, rgba(8,9,9,.12)), url('${imageForPage(page)}')"><div class="route-intro"><a class="back-link" href="/">← Home</a><p class="eyebrow">${page.eyebrow}</p><h1>${page.title}</h1><p>${page.intro}</p></div></div>${directory}${faq || `<div class="content-sections">${sections}</div>`}<div class="content-actions">${related}</div></section>`;
 };
 
@@ -149,13 +151,56 @@ const normalizeInternalLinks = () => {
 const bindLibrarySearch = () => {
   const input = document.querySelector('[data-library-search]');
   if (!input) return;
-  input.addEventListener('input', () => {
+  const cards = [...document.querySelectorAll('[data-library-card]')];
+  const count = document.querySelector('[data-library-count]');
+  const empty = document.querySelector('[data-library-empty]');
+  const update = () => {
     const query = input.value.trim().toLowerCase();
-    document.querySelectorAll('[data-library-card]').forEach((card) => {
-      card.hidden = query && !card.textContent.toLowerCase().includes(query);
+    const visible = cards.filter((card) => {
+      const matches = !query || card.textContent.toLowerCase().includes(query);
+      card.hidden = !matches;
+      return matches;
     });
-  });
+    if (count) count.textContent = `${visible.length} ${visible.length === 1 ? 'resource' : 'resources'} shown`;
+    if (empty) empty.hidden = visible.length !== 0;
+  };
+  input.addEventListener('input', update);
+  update();
 };
+
+const prepareMotionTargets = () => {
+  const targets = document.querySelectorAll('main > section, .feature-card, .story-panel, .topic-card, .content-section-card, .detail-note, .principle-route, .library-card');
+  targets.forEach((target, index) => {
+    target.classList.add('reveal-target');
+    target.style.setProperty('--reveal-delay', `${Math.min(index % 6, 5) * 45}ms`);
+  });
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) {
+    targets.forEach((target) => target.classList.add('is-visible'));
+    return;
+  }
+  const observer = new IntersectionObserver((entries, currentObserver) => {
+    entries.filter((entry) => entry.isIntersecting).forEach((entry) => {
+      entry.target.classList.add('is-visible');
+      currentObserver.unobserve(entry.target);
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+  targets.forEach((target) => observer.observe(target));
+};
+
+const applyTheme = (theme) => {
+  document.documentElement.dataset.theme = theme;
+  if (!themeToggle) return;
+  const light = theme === 'light';
+  themeToggle.setAttribute('aria-pressed', String(light));
+  themeToggle.setAttribute('aria-label', light ? 'Switch to dark theme' : 'Switch to light theme');
+};
+const storedTheme = (() => { try { return localStorage.getItem('azan-theme'); } catch { return null; } })();
+applyTheme(storedTheme || 'dark');
+themeToggle?.addEventListener('click', () => {
+  const next = document.documentElement.dataset.theme === 'light' ? 'dark' : 'light';
+  applyTheme(next);
+  try { localStorage.setItem('azan-theme', next); } catch {}
+});
 
 const bindInquiryForms = () => {
   document.querySelectorAll('[data-inquiry-form]').forEach((inquiryForm) => {
@@ -181,11 +226,20 @@ const bindInquiryForms = () => {
 const openModal = (key) => {
   const service = services[key];
   if (!modal || !modalContent || !service) return;
+  modalTrigger = document.activeElement;
   modalContent.innerHTML = `<div class="modal-image" style="background-image:url('${service.image}')"></div><div class="modal-copy"><p class="eyebrow">${service.eyebrow}</p><h2 id="service-modal-title">${service.title}</h2><p>${service.short}</p><a class="gold-button inline-button" href="/contact?topic=${key}">Ask about this service <span>↗</span></a></div>`;
   modal.showModal();
+  window.requestAnimationFrame(() => modal.classList.add('is-entering'));
+  modal.querySelector('.modal-close')?.focus();
 };
 
-const closeModal = () => modal?.close();
+const closeModal = () => {
+  if (!modal) return;
+  modal.classList.remove('is-entering');
+  modal.close();
+  modalTrigger?.focus?.();
+  modalTrigger = null;
+};
 
 const renderRoute = (path, push = false) => {
   const cleanPath = path.split('?')[0].replace(/\/$/, '') || '/';
@@ -200,6 +254,7 @@ const renderRoute = (path, push = false) => {
   bindInquiryForms();
   bindHeroForm();
   bindLibrarySearch();
+  prepareMotionTargets();
   window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
   const heading = main?.querySelector('h1');
   if (heading) { heading.setAttribute('tabindex', '-1'); heading.focus({ preventScroll: true }); }
@@ -234,12 +289,14 @@ const closeMenu = () => {
   if (!menuToggle || !siteNav) return;
   menuToggle.setAttribute('aria-expanded', 'false');
   siteNav.classList.remove('is-open');
+  menuToggle.querySelector('.menu-toggle-label').textContent = 'Menu';
 };
 menuToggle?.addEventListener('click', () => {
   const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
   menuToggle.setAttribute('aria-expanded', String(!expanded));
   siteNav?.classList.toggle('is-open', !expanded);
   if (!expanded) siteNav?.querySelector('a')?.focus();
+  menuToggle.querySelector('.menu-toggle-label').textContent = expanded ? 'Menu' : 'Close';
 });
 document.addEventListener('keydown', (event) => { if (event.key === 'Escape') closeMenu(); });
 
@@ -247,5 +304,6 @@ bindInquiryForms();
 bindHeroForm();
 normalizeInternalLinks();
 bindLibrarySearch();
+prepareMotionTargets();
 const initialPath = stripBase(window.location.pathname);
 if (initialPath !== '/') renderRoute(initialPath);
