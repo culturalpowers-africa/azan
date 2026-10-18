@@ -13,7 +13,8 @@
     "preview": "vite preview --host 0.0.0.0 --port 3000",
     "test": "npm run build && node tests/smoke.mjs",
     "test:routes": "node tests/smoke.mjs",
-    "check:content": "node scripts/validate-content.mjs"
+    "check:content": "node scripts/validate-content.mjs",
+    "generate:load-fixture": "node scripts/generate-load-fixture.mjs"
   },
   "devDependencies": {
     "vite": "6.4.3"
