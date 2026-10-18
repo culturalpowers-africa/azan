@@ -1,4 +1,6 @@
-# Ancestral Path
+# Ancestral Path / azan
+
+This repository is the production site for Ancestral Path, maintained in the `culturalpowers-africa/azan` repository.
 
 Ancestral Path is a polished, multi-page spiritual guidance website focused on dream interpretation, relationship clarity, grounded protection practices, prosperity and purpose, and ancestral connection.
 
