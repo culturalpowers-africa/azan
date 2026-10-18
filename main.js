@@ -1,4 +1,9 @@
 import './styles.css';
+import heroImage from './images/heritage-hero.jpg';
+import communityImage from './images/heritage-community.jpg';
+import familyImage from './images/heritage-family.jpg';
+import portraitImage from './images/heritage-portrait.jpg';
+import ritualImage from './images/heritage-ritual.jpg';
 
 const BASE_PREFIX = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
 const routeHref = (path) => `${BASE_PREFIX}${path}`;
@@ -12,11 +17,11 @@ const modalContent = document.querySelector('[data-modal-content]');
 const modalClose = document.querySelector('[data-modal-close]');
 
 const assets = {
-  dreams: '/manus-storage/async-images/Ni9X3hloFGU2ijEpWMsda8/image-1.webp',
-  love: '/manus-storage/async-images/Ni9X3hloFGU2ijEpWMsda8/image-2.webp',
-  protection: '/manus-storage/async-images/Ni9X3hloFGU2ijEpWMsda8/image-3.webp',
-  prosperity: '/manus-storage/async-images/Ni9X3hloFGU2ijEpWMsda8/image-4.webp',
-  ancestors: '/manus-storage/async-images/Ni9X3hloFGU2ijEpWMsda8/image-5.webp'
+  dreams: ritualImage,
+  love: portraitImage,
+  protection: familyImage,
+  prosperity: communityImage,
+  ancestors: heroImage
 };
 
 const services = {

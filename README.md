@@ -33,6 +33,10 @@ The Pages workflow builds with `VITE_BASE_PATH=/azan/`, generates `dist/404.html
 
 The same source works in Manus Preview because internal links normalize against `import.meta.env.BASE_URL`.
 
+## Visual assets
+
+Hero and service imagery is bundled under `images/` and imported through Vite, so the published GitHub Pages site does not depend on Manus-only `/manus-storage/` URLs. Replace the current editorial stock images with owned or licensed brand photography before a commercial launch if required.
+
 ## CI and release workflows
 
 The repository contains nine workflows under `.github/workflows/`:
