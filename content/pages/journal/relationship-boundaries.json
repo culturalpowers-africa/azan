@@ -1,0 +1,31 @@
+{
+  "path": "/journal/relationship-boundaries",
+  "eyebrow": "RELATIONSHIPS",
+  "title": "Boundaries are a form of care, not a punishment",
+  "intro": "A grounded reflection on saying yes, saying no, and making room for honest connection.",
+  "imageKey": "love",
+  "sections": [
+    {
+      "heading": "Name the pattern",
+      "body": "Start with what repeats, not only what happened today."
+    },
+    {
+      "heading": "Make the request clear",
+      "body": "A boundary is easier to hear when it describes what you will do next."
+    },
+    {
+      "heading": "Watch the response",
+      "body": "Another person’s reaction gives you information, even when it is difficult."
+    }
+  ],
+  "links": [
+    {
+      "path": "/services/love",
+      "label": "Explore relationship guidance"
+    },
+    {
+      "path": "/contact",
+      "label": "Talk through your question"
+    }
+  ]
+}

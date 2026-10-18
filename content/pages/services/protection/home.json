@@ -1,0 +1,31 @@
+{
+  "path": "/services/protection/home",
+  "eyebrow": "PROTECTION SERVICE",
+  "title": "Grounding practices for home",
+  "intro": "Protection begins with creating a home rhythm that helps you feel present and steady.",
+  "imageKey": "protection",
+  "sections": [
+    {
+      "heading": "Reset the room",
+      "body": "Open a window, clear a surface, and let the space change."
+    },
+    {
+      "heading": "Choose a cue",
+      "body": "Use a light, sound, prayer, or breath as a return point."
+    },
+    {
+      "heading": "Keep support close",
+      "body": "If fear or distress grows, involve trusted or professional support."
+    }
+  ],
+  "links": [
+    {
+      "path": "/services/protection",
+      "label": "View protection service"
+    },
+    {
+      "path": "/contact",
+      "label": "Ask about grounding"
+    }
+  ]
+}

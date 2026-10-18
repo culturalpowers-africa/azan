@@ -1,0 +1,31 @@
+{
+  "path": "/about/practitioner",
+  "eyebrow": "THE PRACTITIONER",
+  "title": "A listening practice before a performance",
+  "intro": "The work begins with attention: to your question, your language, and the context that makes it yours.",
+  "imageKey": "ancestors",
+  "sections": [
+    {
+      "heading": "No script for your life",
+      "body": "Sessions are shaped around what you bring, not forced into a fixed interpretation."
+    },
+    {
+      "heading": "Cultural respect",
+      "body": "We treat ancestral language and cultural memory with humility rather than spectacle."
+    },
+    {
+      "heading": "A practical close",
+      "body": "Every conversation ends by returning to what you can choose next."
+    }
+  ],
+  "links": [
+    {
+      "path": "/about/method",
+      "label": "How we work"
+    },
+    {
+      "path": "/contact",
+      "label": "Start a conversation"
+    }
+  ]
+}

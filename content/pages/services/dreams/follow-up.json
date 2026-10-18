@@ -1,0 +1,31 @@
+{
+  "path": "/services/dreams/follow-up",
+  "eyebrow": "DREAM SERVICE",
+  "title": "What to do after a dream reading",
+  "intro": "Insight becomes useful when you give it a small place in ordinary life.",
+  "imageKey": "dreams",
+  "sections": [
+    {
+      "heading": "Write one line",
+      "body": "Capture the meaning that feels most alive."
+    },
+    {
+      "heading": "Watch the week",
+      "body": "Notice what changes in your choices or attention."
+    },
+    {
+      "heading": "Return if needed",
+      "body": "A follow-up can explore a new dream or a pattern that continues."
+    }
+  ],
+  "links": [
+    {
+      "path": "/services/dreams",
+      "label": "View dream service"
+    },
+    {
+      "path": "/contact?topic=dream interpretation",
+      "label": "Ask about follow-up"
+    }
+  ]
+}

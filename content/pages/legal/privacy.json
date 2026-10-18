@@ -1,0 +1,31 @@
+{
+  "path": "/privacy",
+  "eyebrow": "PRIVACY",
+  "title": "Your story should be handled with care",
+  "intro": "A plain-language privacy note for visitors who contact Ancestral Path.",
+  "imageKey": "protection",
+  "sections": [
+    {
+      "heading": "Messages",
+      "body": "WhatsApp messages are handled through WhatsApp and are visible to the people participating in the conversation."
+    },
+    {
+      "heading": "Information",
+      "body": "Share only what is necessary for your question. Do not send sensitive medical, financial, or legal records."
+    },
+    {
+      "heading": "Your choice",
+      "body": "You can ask us to stop a conversation at any time."
+    }
+  ],
+  "links": [
+    {
+      "path": "/contact",
+      "label": "Contact us"
+    },
+    {
+      "path": "/terms",
+      "label": "Read terms"
+    }
+  ]
+}

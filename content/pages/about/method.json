@@ -1,0 +1,31 @@
+{
+  "path": "/about/method",
+  "eyebrow": "HOW WE WORK",
+  "title": "Three movements: listen, reflect, return",
+  "intro": "A simple framework keeps the work warm without letting it become vague.",
+  "imageKey": "dreams",
+  "sections": [
+    {
+      "heading": "Listen",
+      "body": "We make room for the story beneath the request."
+    },
+    {
+      "heading": "Reflect",
+      "body": "We explore symbols, patterns, feelings, and possibilities together."
+    },
+    {
+      "heading": "Return",
+      "body": "We close with a practical question, boundary, ritual, or next step."
+    }
+  ],
+  "links": [
+    {
+      "path": "/approach",
+      "label": "Our approach"
+    },
+    {
+      "path": "/guidance",
+      "label": "Explore services"
+    }
+  ]
+}

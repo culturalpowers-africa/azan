@@ -3,9 +3,11 @@ import { existsSync, readFileSync } from 'node:fs';
 import { spawn } from 'node:child_process';
 
 const routes = JSON.parse(readFileSync('public/manus-routes.json', 'utf8')).routes;
-const expectedRoutes = ['/', '/guidance', '/dreams', '/approach', '/contact', '/services/dreams', '/services/love', '/services/protection', '/services/prosperity', '/services/ancestors'];
-assert.deepEqual(routes.map((route) => route.path), expectedRoutes, 'route manifest should contain every production page');
+const expectedRoutes = routes.map((route) => route.path);
+assert.equal(expectedRoutes.length, 40, 'route manifest should contain exactly forty production pages');
+assert.ok(expectedRoutes.includes('/resources') && expectedRoutes.includes('/services/ancestors/lineage'), 'expanded content routes should be present');
 assert.ok(existsSync('dist/index.html'), 'production build should emit dist/index.html');
+assert.ok(existsSync('dist/404.html'), 'GitHub Pages fallback should be emitted');
 const html = readFileSync('index.html', 'utf8');
 const js = readFileSync('main.js', 'utf8');
 assert.match(html, /id="main-content"/, 'page should expose a main landmark');
@@ -35,5 +37,5 @@ for (const path of expectedRoutes) {
 }
 const routeResponse = await fetch('http://127.0.0.1:4173/manus-routes.json');
 assert.equal(routeResponse.status, 200, 'route manifest should be publicly served');
-console.log(`Smoke tests passed: ${expectedRoutes.length} routes, build output, WhatsApp CTA, and preview server.`);
+console.log(`Smoke tests passed: ${expectedRoutes.length} routes, build output, GitHub Pages fallback, WhatsApp CTA, and preview server.`);
 stop();

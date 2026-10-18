@@ -1,0 +1,31 @@
+{
+  "path": "/pricing",
+  "eyebrow": "SESSION GUIDE",
+  "title": "Choose a conversation that fits the question",
+  "intro": "Session lengths are shared as a guide so you can choose what feels comfortable before contacting us.",
+  "imageKey": "love",
+  "sections": [
+    {
+      "heading": "Short reflection",
+      "body": "A focused 45–60 minute conversation for one clear question."
+    },
+    {
+      "heading": "Deeper conversation",
+      "body": "A 60 minute session for layered family, home, or ancestral questions."
+    },
+    {
+      "heading": "Ask first",
+      "body": "Message us before booking if you are unsure which service fits."
+    }
+  ],
+  "links": [
+    {
+      "path": "/guidance",
+      "label": "Compare services"
+    },
+    {
+      "path": "/contact",
+      "label": "Ask about availability"
+    }
+  ]
+}

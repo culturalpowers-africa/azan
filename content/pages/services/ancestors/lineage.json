@@ -1,0 +1,31 @@
+{
+  "path": "/services/ancestors/lineage",
+  "eyebrow": "ANCESTRAL SERVICE",
+  "title": "A gentle entry into lineage work",
+  "intro": "You can begin with a name, a family story, a photograph, or simply a feeling of being called back.",
+  "imageKey": "ancestors",
+  "sections": [
+    {
+      "heading": "Bring what you know",
+      "body": "The gaps in a family story can be part of the conversation too."
+    },
+    {
+      "heading": "Keep the present visible",
+      "body": "Ancestral reflection should support your life now."
+    },
+    {
+      "heading": "Make a living gesture",
+      "body": "Choose a value or practice you want to carry forward."
+    }
+  ],
+  "links": [
+    {
+      "path": "/services/ancestors",
+      "label": "View ancestral service"
+    },
+    {
+      "path": "/contact",
+      "label": "Ask about lineage"
+    }
+  ]
+}

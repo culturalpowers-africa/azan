@@ -1,0 +1,31 @@
+{
+  "path": "/services/love/family",
+  "eyebrow": "RELATIONSHIP SERVICE",
+  "title": "When love and family are tangled",
+  "intro": "A careful place to explore in-laws, family pressure, loyalty, and the peace you want at home.",
+  "imageKey": "ancestors",
+  "sections": [
+    {
+      "heading": "Separate roles",
+      "body": "You can care about family without accepting every demand."
+    },
+    {
+      "heading": "Protect the relationship",
+      "body": "Talk with your partner about the boundary together."
+    },
+    {
+      "heading": "Choose repeatable peace",
+      "body": "Look for a practice you can maintain, not a dramatic one-time fix."
+    }
+  ],
+  "links": [
+    {
+      "path": "/services/love",
+      "label": "View relationship service"
+    },
+    {
+      "path": "/contact",
+      "label": "Ask a question"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "path": "/contact/whatsapp",
+  "eyebrow": "WHATSAPP",
+  "title": "Begin privately, one message at a time",
+  "intro": "Our WhatsApp path is designed for a simple first step: choose a topic, share what feels comfortable, and ask what comes next.",
+  "imageKey": "love",
+  "sections": [
+    {
+      "heading": "Start with hello",
+      "body": "You do not need a polished explanation."
+    },
+    {
+      "heading": "Share your topic",
+      "body": "Tell us whether the question is about dreams, love, protection, prosperity, or ancestors."
+    },
+    {
+      "heading": "Set your pace",
+      "body": "We will explain the next step before any session begins."
+    }
+  ],
+  "links": [
+    {
+      "path": "/contact",
+      "label": "Open the inquiry form"
+    },
+    {
+      "path": "/guidance",
+      "label": "Compare services"
+    }
+  ]
+}

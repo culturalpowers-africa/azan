@@ -1,0 +1,28 @@
+name: Performance budget
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  budget:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - name: Enforce static bundle budgets
+        run: |
+          css=$(find dist/assets -name '*.css' -printf '%s\n' | awk '{s+=$1} END {print s+0}')
+          js=$(find dist/assets -name '*.js' -printf '%s\n' | awk '{s+=$1} END {print s+0}')
+          echo "CSS bytes: $css"
+          echo "JS bytes: $js"
+          test "$css" -lt 150000
+          test "$js" -lt 250000

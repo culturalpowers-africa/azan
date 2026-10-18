@@ -1,0 +1,31 @@
+{
+  "path": "/journal/prosperity-with-purpose",
+  "eyebrow": "PURPOSE",
+  "title": "Prosperity feels different when it serves a life you actually want",
+  "intro": "A reflection on ambition, money, service, and choosing momentum that has meaning.",
+  "imageKey": "prosperity",
+  "sections": [
+    {
+      "heading": "Define enough",
+      "body": "A clear definition of enough protects your energy from endless urgency."
+    },
+    {
+      "heading": "Make the next move visible",
+      "body": "A practical next step is more powerful than a perfect plan."
+    },
+    {
+      "heading": "Build with care",
+      "body": "Growth should protect your health, relationships, and values too."
+    }
+  ],
+  "links": [
+    {
+      "path": "/services/prosperity",
+      "label": "Explore prosperity guidance"
+    },
+    {
+      "path": "/contact",
+      "label": "Talk about your next step"
+    }
+  ]
+}

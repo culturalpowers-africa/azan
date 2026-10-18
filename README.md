@@ -1,8 +1,6 @@
 # Ancestral Path / azan
 
-This repository is the production site for Ancestral Path, maintained in the `culturalpowers-africa/azan` repository.
-
-Ancestral Path is a polished, multi-page spiritual guidance website focused on dream interpretation, relationship clarity, grounded protection practices, prosperity and purpose, and ancestral connection.
+This repository is the production site for Ancestral Path, maintained in `culturalpowers-africa/azan`. It is a dark heritage editorial platform for dream interpretation, relationship clarity, grounded protection practices, prosperity and purpose, ancestral connection, and reflective learning.
 
 ## Run locally
 
@@ -11,7 +9,7 @@ npm ci
 npm run dev
 ```
 
-The development server runs on port 3000. The site is a Vite-powered SPA with direct route support through the managed preview server.
+The Vite development server runs on port 3000. The app is content-driven: hand-authored service pages live in `main.js`, while thirty additional editorial pages live under `content/pages/` as structured JSON files.
 
 ## Production verification
 
@@ -19,23 +17,34 @@ The development server runs on port 3000. The site is a Vite-powered SPA with di
 npm test
 ```
 
-The test command builds the production bundle, starts a preview server, verifies all declared routes, checks the route manifest, and confirms the WhatsApp conversion path.
+The test command synchronizes the route manifest, builds the production bundle, creates the GitHub Pages `404.html` fallback, starts a preview server, checks all forty routes, verifies the WhatsApp CTA, and validates the five managed service image references.
 
 ## Production routes
 
-- `/` — Home
-- `/guidance` — Service directory with quick-view popouts
-- `/dreams` — Dream interpretation editorial page
-- `/approach` — Grounded, respectful service approach
-- `/contact` — WhatsApp inquiry form
-- `/services/dreams`
-- `/services/love`
-- `/services/protection`
-- `/services/prosperity`
-- `/services/ancestors`
+The site exposes exactly 40 routes across the home experience, guidance and service pages, journal, resources, about, community, contact, legal, and service-support content. The complete machine-readable route contract is served at `/manus-routes.json`.
 
-## CI and releases
+Key entry points include `/`, `/guidance`, `/dreams`, `/approach`, `/contact`, `/resources`, `/journal`, `/about`, `/community`, `/faq`, `/pricing`, `/privacy`, `/terms`, `/accessibility`, and the five service detail routes under `/services/`. Deeper pages cover dream preparation and follow-up, relationship communication and family boundaries, home grounding, prosperity for business, and ancestral lineage reflection.
 
-`.github/workflows/ci.yml` runs `npm ci` and `npm test` on every push to `main` and every pull request. `.github/workflows/release.yml` builds and uploads the `dist` production artifact for tagged releases (`v*.*.*`) or a manual workflow dispatch.
+## GitHub Pages
 
-All service detail pages use distinct managed image assets and route visitors to the WhatsApp number `+27 73 255 2543`. Spiritual content is intentionally framed as reflective guidance and does not promise fixed outcomes or replace professional care.
+The Pages workflow builds with `VITE_BASE_PATH=/azan/`, generates `dist/404.html` for direct nested-route loading, uploads the artifact, and deploys it with the official GitHub Pages actions. Once enabled for the repository, the site will be available at:
+
+`https://culturalpowers-africa.github.io/azan/`
+
+The same source works in Manus Preview because internal links normalize against `import.meta.env.BASE_URL`.
+
+## CI and release workflows
+
+The repository contains nine workflows under `.github/workflows/`:
+
+- `ci.yml` — build and smoke tests on pushes and pull requests.
+- `release.yml` — tagged/manual production artifact builds.
+- `pages.yml` — GitHub Pages build and deployment.
+- `html-validation.yml` — required source, manifest, and build-file checks.
+- `route-matrix.yml` — matrix verification for all forty routes.
+- `dependency-review.yml` — pull-request dependency review.
+- `codeql.yml` — scheduled and change-based JavaScript analysis.
+- `link-check.yml` — full preview and conversion smoke suite.
+- `performance.yml` — JavaScript and CSS bundle budgets.
+
+All service pages route visitors to WhatsApp at `+27 73 255 2543`. Spiritual content is intentionally framed as reflective guidance and does not promise fixed outcomes or replace professional care.

@@ -1,0 +1,31 @@
+{
+  "path": "/services/protection/grounding",
+  "eyebrow": "PROTECTION SERVICE",
+  "title": "A simple grounding sequence",
+  "intro": "A three-minute practice for returning from a heavy moment to the room you are in.",
+  "imageKey": "protection",
+  "sections": [
+    {
+      "heading": "Name five things",
+      "body": "Use your senses to reconnect with the present."
+    },
+    {
+      "heading": "Slow the exhale",
+      "body": "Let the out-breath become a little longer than the in-breath."
+    },
+    {
+      "heading": "Choose one action",
+      "body": "Drink water, step outside, or message someone you trust."
+    }
+  ],
+  "links": [
+    {
+      "path": "/services/protection",
+      "label": "View protection service"
+    },
+    {
+      "path": "/resources",
+      "label": "Browse resources"
+    }
+  ]
+}

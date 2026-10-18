@@ -1,0 +1,36 @@
+{
+  "path": "/resources",
+  "eyebrow": "RESOURCES",
+  "title": "A library for the questions that stay with you",
+  "intro": "Practical prompts, gentle reading, and grounded ways to reflect between conversations.",
+  "imageKey": "ancestors",
+  "sections": [
+    {
+      "heading": "Start with your question",
+      "body": "Choose the resource that sounds closest to what you are carrying today."
+    },
+    {
+      "heading": "Use what helps",
+      "body": "You do not need to read everything. One useful prompt is enough to begin."
+    },
+    {
+      "heading": "Return to real life",
+      "body": "Every reflection should lead back to your relationships, choices, and wellbeing."
+    }
+  ],
+  "links": [
+    {
+      "path": "/guidance",
+      "label": "Explore guidance"
+    },
+    {
+      "path": "/journal",
+      "label": "Read the journal"
+    },
+    {
+      "path": "/contact",
+      "label": "Ask a question"
+    }
+  ],
+  "kind": "directory"
+}

@@ -1,0 +1,31 @@
+{
+  "path": "/terms",
+  "eyebrow": "TERMS",
+  "title": "The boundaries of spiritual guidance",
+  "intro": "These terms keep the service honest, respectful, and clear about what it is—and is not.",
+  "imageKey": "ancestors",
+  "sections": [
+    {
+      "heading": "Reflective service",
+      "body": "Guidance is for reflection and personal meaning, not a guaranteed prediction or fixed result."
+    },
+    {
+      "heading": "Professional care",
+      "body": "Spiritual guidance does not replace medical, mental-health, legal, or financial advice."
+    },
+    {
+      "heading": "Respectful contact",
+      "body": "We do not support harassment, coercion, hate, or fear-based demands for payment."
+    }
+  ],
+  "links": [
+    {
+      "path": "/approach",
+      "label": "Read our approach"
+    },
+    {
+      "path": "/contact",
+      "label": "Ask a question"
+    }
+  ]
+}

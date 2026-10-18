@@ -1,0 +1,31 @@
+{
+  "path": "/services/dreams/what-to-bring",
+  "eyebrow": "DREAM SERVICE",
+  "title": "What to bring to a dream conversation",
+  "intro": "You only need the dream you remember and the feeling that made you want to ask about it.",
+  "imageKey": "dreams",
+  "sections": [
+    {
+      "heading": "The scene",
+      "body": "Write the setting, people, objects, colors, and movement."
+    },
+    {
+      "heading": "The feeling",
+      "body": "Notice what stayed in your body after waking."
+    },
+    {
+      "heading": "The question",
+      "body": "Bring the part you most want to understand."
+    }
+  ],
+  "links": [
+    {
+      "path": "/services/dreams",
+      "label": "View the dream service"
+    },
+    {
+      "path": "/contact?topic=dream interpretation",
+      "label": "Ask about a session"
+    }
+  ]
+}

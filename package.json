@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host 0.0.0.0 --port 3000",
-    "build": "vite build",
+    "prebuild": "node scripts/sync-routes.mjs",
+    "build": "vite build && node scripts/prepare-github-pages.mjs",
     "preview": "vite preview --host 0.0.0.0 --port 3000",
     "test": "npm run build && node tests/smoke.mjs"
   },

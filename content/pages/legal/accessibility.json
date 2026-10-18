@@ -1,0 +1,31 @@
+{
+  "path": "/accessibility",
+  "eyebrow": "ACCESSIBILITY",
+  "title": "A calmer experience for more people",
+  "intro": "We are building Ancestral Path so visitors can read, navigate, and contact us in ways that work for them.",
+  "imageKey": "prosperity",
+  "sections": [
+    {
+      "heading": "Keyboard access",
+      "body": "Interactive controls use visible focus styles and native buttons, forms, and disclosures."
+    },
+    {
+      "heading": "Readable design",
+      "body": "The site uses responsive type, strong contrast, and reduced-motion support."
+    },
+    {
+      "heading": "Need help?",
+      "body": "If a page or interaction is difficult to use, contact us and tell us what would help."
+    }
+  ],
+  "links": [
+    {
+      "path": "/contact",
+      "label": "Contact us"
+    },
+    {
+      "path": "/",
+      "label": "Return home"
+    }
+  ]
+}

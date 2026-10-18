@@ -1,0 +1,32 @@
+{
+  "path": "/faq",
+  "eyebrow": "COMMON QUESTIONS",
+  "title": "Clear answers before you begin",
+  "intro": "A straightforward guide to sessions, boundaries, privacy, and what spiritual guidance can and cannot do.",
+  "imageKey": "ancestors",
+  "sections": [
+    {
+      "heading": "What happens in a session?",
+      "body": "We listen to your question, reflect together, and end with a grounded next step."
+    },
+    {
+      "heading": "Do you guarantee outcomes?",
+      "body": "No. We do not promise to control another person, predict a fixed future, or guarantee money, love, or healing."
+    },
+    {
+      "heading": "Can I ask for a specific ritual?",
+      "body": "You can share what you are looking for. We will explain what is appropriate and never use fear or pressure."
+    }
+  ],
+  "links": [
+    {
+      "path": "/contact",
+      "label": "Ask a private question"
+    },
+    {
+      "path": "/approach",
+      "label": "Read our approach"
+    }
+  ],
+  "kind": "faq"
+}

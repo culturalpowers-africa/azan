@@ -1,0 +1,31 @@
+{
+  "path": "/contact/contact-faq",
+  "eyebrow": "CONTACT FAQ",
+  "title": "Questions about reaching out",
+  "intro": "A few practical answers for visitors who are deciding whether to send a message.",
+  "imageKey": "ancestors",
+  "sections": [
+    {
+      "heading": "Do I have to book immediately?",
+      "body": "No. You can ask a question first."
+    },
+    {
+      "heading": "Can I remain private?",
+      "body": "Share only what feels comfortable. The form does not ask for unnecessary personal records."
+    },
+    {
+      "heading": "What if I am not sure?",
+      "body": "Tell us that. Uncertainty is a valid place to begin."
+    }
+  ],
+  "links": [
+    {
+      "path": "/contact",
+      "label": "Open contact"
+    },
+    {
+      "path": "/privacy",
+      "label": "Read privacy"
+    }
+  ]
+}

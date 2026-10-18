@@ -1,0 +1,31 @@
+{
+  "path": "/journal/grounding-at-home",
+  "eyebrow": "HOME & GROUNDING",
+  "title": "Small rituals that make a home feel more settled",
+  "intro": "Simple, low-pressure practices for creating a calmer rhythm where you live.",
+  "imageKey": "protection",
+  "sections": [
+    {
+      "heading": "Clear one surface",
+      "body": "A small physical reset can give the mind a place to breathe."
+    },
+    {
+      "heading": "Use the senses",
+      "body": "Light, water, sound, and fresh air can help you return to the present."
+    },
+    {
+      "heading": "Keep it yours",
+      "body": "A grounding practice should fit your home, beliefs, and daily capacity."
+    }
+  ],
+  "links": [
+    {
+      "path": "/services/protection",
+      "label": "Explore protection and clearing"
+    },
+    {
+      "path": "/contact",
+      "label": "Ask about a reset"
+    }
+  ]
+}

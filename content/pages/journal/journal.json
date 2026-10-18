@@ -1,0 +1,31 @@
+{
+  "path": "/journal",
+  "eyebrow": "THE JOURNAL",
+  "title": "Notes for the inner work of ordinary days",
+  "intro": "Short, considered essays on dreams, relationships, home, ancestry, and purpose.",
+  "imageKey": "dreams",
+  "sections": [
+    {
+      "heading": "A slower kind of insight",
+      "body": "The journal is a place to pause before you decide what something means."
+    },
+    {
+      "heading": "Keep your own meaning",
+      "body": "Cultural context matters, but your lived experience remains the best guide."
+    },
+    {
+      "heading": "Take one line with you",
+      "body": "Read for a sentence that helps you name what you already know."
+    }
+  ],
+  "links": [
+    {
+      "path": "/resources",
+      "label": "Browse resources"
+    },
+    {
+      "path": "/contact",
+      "label": "Begin a conversation"
+    }
+  ]
+}

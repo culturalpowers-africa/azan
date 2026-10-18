@@ -1,0 +1,31 @@
+{
+  "path": "/journal/understanding-dream-symbols",
+  "eyebrow": "DREAMS",
+  "title": "Understanding dream symbols without a one-size-fits-all dictionary",
+  "intro": "Symbols become useful when they connect to your memory, feelings, and current life.",
+  "imageKey": "dreams",
+  "sections": [
+    {
+      "heading": "Notice the feeling",
+      "body": "The emotional temperature of a dream often carries more information than the object itself."
+    },
+    {
+      "heading": "Ask what changed",
+      "body": "Look for the moment the dream shifted, opened, closed, or became urgent."
+    },
+    {
+      "heading": "Let meaning unfold",
+      "body": "A dream can hold more than one honest reading. Give it time."
+    }
+  ],
+  "links": [
+    {
+      "path": "/dreams",
+      "label": "Explore dream interpretation"
+    },
+    {
+      "path": "/services/dreams",
+      "label": "View the dream service"
+    }
+  ]
+}

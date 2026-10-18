@@ -1,0 +1,31 @@
+{
+  "path": "/community/events",
+  "eyebrow": "COMMUNITY EVENTS",
+  "title": "Gatherings for reflection and shared learning",
+  "intro": "When live circles and workshops are available, this page will hold the details and registration link.",
+  "imageKey": "prosperity",
+  "sections": [
+    {
+      "heading": "Small circles",
+      "body": "Guided conversations with room for listening and reflection."
+    },
+    {
+      "heading": "Practical workshops",
+      "body": "Prompts for dreams, home grounding, lineage, and purpose."
+    },
+    {
+      "heading": "Notice updates",
+      "body": "Contact us to ask about the next available gathering."
+    }
+  ],
+  "links": [
+    {
+      "path": "/contact",
+      "label": "Ask about events"
+    },
+    {
+      "path": "/resources",
+      "label": "Browse resources"
+    }
+  ]
+}

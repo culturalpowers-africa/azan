@@ -1,0 +1,35 @@
+{
+  "path": "/community",
+  "eyebrow": "COMMUNITY",
+  "title": "A wider circle of learning and care",
+  "intro": "Explore stories, gatherings, and resources for people who want reflection to remain connected to community.",
+  "imageKey": "love",
+  "sections": [
+    {
+      "heading": "Learn together",
+      "body": "Good questions become richer when they are held with humility."
+    },
+    {
+      "heading": "Share carefully",
+      "body": "Community stories should protect the people inside them."
+    },
+    {
+      "heading": "Stay connected",
+      "body": "A private session can be one part of a wider support system."
+    }
+  ],
+  "links": [
+    {
+      "path": "/community/stories",
+      "label": "Read stories"
+    },
+    {
+      "path": "/community/events",
+      "label": "See events"
+    },
+    {
+      "path": "/contact",
+      "label": "Join the conversation"
+    }
+  ]
+}

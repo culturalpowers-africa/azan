@@ -1,0 +1,31 @@
+{
+  "path": "/services/love/communication",
+  "eyebrow": "RELATIONSHIP SERVICE",
+  "title": "Guidance for a clearer conversation",
+  "intro": "Use reflection to decide what you need to say, ask, or stop carrying alone.",
+  "imageKey": "love",
+  "sections": [
+    {
+      "heading": "Before speaking",
+      "body": "Name the outcome you want from the conversation."
+    },
+    {
+      "heading": "During the conversation",
+      "body": "Stay with specific behavior and a clear request."
+    },
+    {
+      "heading": "Afterward",
+      "body": "Let the response give you information about what is possible."
+    }
+  ],
+  "links": [
+    {
+      "path": "/services/love",
+      "label": "View relationship service"
+    },
+    {
+      "path": "/approach",
+      "label": "Read our approach"
+    }
+  ]
+}

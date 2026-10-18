@@ -1,0 +1,31 @@
+{
+  "path": "/services/prosperity/business",
+  "eyebrow": "PROSPERITY SERVICE",
+  "title": "Protect what you are building",
+  "intro": "Spiritual reflection can support a business decision when it stays connected to numbers, people, and action.",
+  "imageKey": "prosperity",
+  "sections": [
+    {
+      "heading": "Name the decision",
+      "body": "Be specific about what you need to choose."
+    },
+    {
+      "heading": "Check the practical facts",
+      "body": "Insight should sit beside your budget, timeline, and responsibilities."
+    },
+    {
+      "heading": "Choose the next move",
+      "body": "Leave with one action you can complete."
+    }
+  ],
+  "links": [
+    {
+      "path": "/services/prosperity",
+      "label": "View prosperity service"
+    },
+    {
+      "path": "/contact",
+      "label": "Ask about business guidance"
+    }
+  ]
+}

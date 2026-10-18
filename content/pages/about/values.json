@@ -1,0 +1,35 @@
+{
+  "path": "/about/values",
+  "eyebrow": "OUR VALUES",
+  "title": "Care is a practice, not a promise",
+  "intro": "These are the standards behind every service, page, and conversation.",
+  "imageKey": "protection",
+  "sections": [
+    {
+      "heading": "Consent",
+      "body": "You decide what to share and what to do next."
+    },
+    {
+      "heading": "Clarity",
+      "body": "We explain limitations and avoid dramatic claims."
+    },
+    {
+      "heading": "Dignity",
+      "body": "Your story is not content for spectacle. It is yours."
+    }
+  ],
+  "links": [
+    {
+      "path": "/privacy",
+      "label": "Read privacy"
+    },
+    {
+      "path": "/terms",
+      "label": "Read terms"
+    },
+    {
+      "path": "/contact",
+      "label": "Contact us"
+    }
+  ]
+}

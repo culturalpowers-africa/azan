@@ -1,0 +1,31 @@
+{
+  "path": "/journal/ancestral-memory",
+  "eyebrow": "ANCESTRAL MEMORY",
+  "title": "What family memory asks us to carry—and what it asks us to release",
+  "intro": "Lineage can be a source of belonging without becoming a weight you must carry alone.",
+  "imageKey": "ancestors",
+  "sections": [
+    {
+      "heading": "Remember with care",
+      "body": "Stories can be honored without being romanticized."
+    },
+    {
+      "heading": "Separate love from obligation",
+      "body": "You can respect where you come from and still choose a different path."
+    },
+    {
+      "heading": "Make a living connection",
+      "body": "Let memory shape a value, a ritual, or a conversation in the present."
+    }
+  ],
+  "links": [
+    {
+      "path": "/services/ancestors",
+      "label": "Explore ancestral connection"
+    },
+    {
+      "path": "/about/values",
+      "label": "Read our values"
+    }
+  ]
+}

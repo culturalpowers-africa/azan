@@ -1,0 +1,35 @@
+{
+  "path": "/about",
+  "eyebrow": "ABOUT ANCESTRAL PATH",
+  "title": "A modern space for old questions",
+  "intro": "Ancestral Path brings together reflective spiritual guidance, editorial learning, and a clear respect for personal agency.",
+  "imageKey": "ancestors",
+  "sections": [
+    {
+      "heading": "Rooted",
+      "body": "We honor the wisdom people carry through family, place, memory, and tradition."
+    },
+    {
+      "heading": "Grounded",
+      "body": "We keep insight connected to real choices, real relationships, and everyday wellbeing."
+    },
+    {
+      "heading": "Human",
+      "body": "There is no performance here. You can arrive uncertain and begin with one honest sentence."
+    }
+  ],
+  "links": [
+    {
+      "path": "/about/practitioner",
+      "label": "Meet the practitioner"
+    },
+    {
+      "path": "/about/values",
+      "label": "Read our values"
+    },
+    {
+      "path": "/contact",
+      "label": "Begin a conversation"
+    }
+  ]
+}

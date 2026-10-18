@@ -1,5 +1,10 @@
 import './styles.css';
 
+const BASE_PREFIX = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
+const routeHref = (path) => `${BASE_PREFIX}${path}`;
+const stripBase = (path) => (BASE_PREFIX && path.startsWith(BASE_PREFIX) ? path.slice(BASE_PREFIX.length) || '/' : path);
+const contentModules = import.meta.glob('./content/pages/**/*.json', { eager: true, query: '?json', import: 'default' });
+const contentPages = Object.values(contentModules);
 const main = document.querySelector('#main-content');
 const homeMarkup = main?.innerHTML || '';
 const modal = document.querySelector('#service-modal');
@@ -81,6 +86,16 @@ const approachPage = () => `<section class="route-page editorial-route"><div cla
 
 const contactPage = () => `<section class="route-page contact-route"><div class="route-intro"><a class="back-link" href="/">← Home</a><p class="eyebrow">BEGIN YOUR CONVERSATION</p><h1>A simple hello<br /><em>is enough.</em></h1><p>Choose a topic, share only what feels comfortable, and prepare a private WhatsApp message in one step.</p></div><div class="contact-route-grid"><div class="contact-route-image" style="background-image:url('${assets.ancestors}')"></div><div class="contact-route-card"><form class="inquiry-form" data-inquiry-form><label for="topic">What would you like guidance on?</label><div class="select-wrap"><select id="topic" name="topic"><option value="dream interpretation">Dream interpretation</option><option value="love or relationships">Love or relationships</option><option value="protection and clearing">Protection and clearing</option><option value="prosperity and purpose">Prosperity and purpose</option><option value="ancestral connection">Ancestral connection</option></select><span>⌄</span></div><label for="message">A little about your question <small>(optional)</small></label><textarea id="message" name="message" rows="6" placeholder="Share only what feels comfortable..."></textarea><button class="gold-button" type="submit">Prepare my WhatsApp message <span>↗</span></button><p class="form-status" data-form-status role="status" aria-live="polite"></p></form><div class="contact-route-number"><small>WhatsApp directly</small><a href="https://wa.me/27732552543" target="_blank" rel="noreferrer">+27 73 255 2543</a></div></div></div></section>`;
 
+const imageForPage = (page) => assets[page.imageKey] || assets.ancestors;
+
+const genericPage = (page) => {
+  const sections = page.sections.map((section, index) => `<article class="content-section-card"><span>${String(index + 1).padStart(2, '0')}</span><div><h2>${section.heading}</h2><p>${section.body}</p></div></article>`).join('');
+  const related = (page.links || []).map((link) => `<a class="outline-button" href="${link.path}">${link.label} <span>→</span></a>`).join('');
+  const faq = page.kind === 'faq' ? `<div class="faq-list">${page.sections.map((section) => `<details><summary>${section.heading}<span>＋</span></summary><p>${section.body}</p></details>`).join('')}</div>` : '';
+  const directory = page.kind === 'directory' ? `<div class="library-tools"><label for="library-search">Search the library</label><input id="library-search" data-library-search type="search" placeholder="Try dreams, home, relationships..." /></div><div class="library-grid">${contentPages.filter((item) => item.path !== '/resources').map((item) => `<a class="library-card" data-library-card href="${item.path}"><span>${item.eyebrow}</span><strong>${item.title}</strong><small>${item.intro}</small></a>`).join('')}</div>` : '';
+  return `<section class="route-page content-page"><div class="content-hero" style="background-image:linear-gradient(90deg, rgba(8,9,9,.96), rgba(8,9,9,.57) 58%, rgba(8,9,9,.12)), url('${imageForPage(page)}')"><div class="route-intro"><a class="back-link" href="/">← Home</a><p class="eyebrow">${page.eyebrow}</p><h1>${page.title}</h1><p>${page.intro}</p></div></div>${directory}${faq || `<div class="content-sections">${sections}</div>`}<div class="content-actions">${related}</div></section>`;
+};
+
 const routeContent = (path) => {
   if (path === '/guidance') return guidancePage();
   if (path === '/dreams') return dreamsPage();
@@ -88,14 +103,35 @@ const routeContent = (path) => {
   if (path === '/contact') return contactPage();
   const serviceKey = Object.keys(services).find((key) => path === `/services/${key}`);
   if (serviceKey) return detailPage(serviceKey);
+  const contentPage = contentPages.find((page) => page.path === path);
+  if (contentPage) return genericPage(contentPage);
   return homeMarkup;
 };
 
 const setActiveNav = (path) => {
   document.querySelectorAll('.site-nav a').forEach((link) => {
-    const target = new URL(link.href).pathname;
+    const target = stripBase(new URL(link.href).pathname);
     const isGuidanceDetail = target === '/guidance' && path.startsWith('/services/');
     link.classList.toggle('is-active', target === path || isGuidanceDetail || (path === '/' && target === '/'));
+  });
+};
+
+const normalizeInternalLinks = () => {
+  document.querySelectorAll('a[href^="/"]').forEach((link) => {
+    const raw = link.getAttribute('href');
+    if (raw.startsWith('//') || raw.startsWith('/manus-storage')) return;
+    link.setAttribute('href', routeHref(raw));
+  });
+};
+
+const bindLibrarySearch = () => {
+  const input = document.querySelector('[data-library-search]');
+  if (!input) return;
+  input.addEventListener('input', () => {
+    const query = input.value.trim().toLowerCase();
+    document.querySelectorAll('[data-library-card]').forEach((card) => {
+      card.hidden = query && !card.textContent.toLowerCase().includes(query);
+    });
   });
 };
 
@@ -131,10 +167,12 @@ const closeModal = () => modal?.close();
 
 const renderRoute = (path, push = false) => {
   const cleanPath = path.split('?')[0].replace(/\/$/, '') || '/';
-  if (push) window.history.pushState({}, '', path);
+  if (push) window.history.pushState({}, '', routeHref(path));
   if (main) main.innerHTML = routeContent(cleanPath);
+  normalizeInternalLinks();
   setActiveNav(cleanPath);
   bindInquiryForms();
+  bindLibrarySearch();
   window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
 };
 
@@ -142,13 +180,15 @@ document.addEventListener('click', (event) => {
   const serviceTrigger = event.target.closest('[data-service-popout]');
   if (serviceTrigger) { event.preventDefault(); openModal(serviceTrigger.dataset.servicePopout); return; }
   const link = event.target.closest('a');
-  if (!link || link.target === '_blank' || link.origin !== window.location.origin || !link.pathname.startsWith('/')) return;
-  event.preventDefault(); renderRoute(link.pathname + link.search, true);
+  if (!link || link.target === '_blank' || link.origin !== window.location.origin) return;
+  const path = stripBase(link.pathname);
+  if (!path.startsWith('/')) return;
+  event.preventDefault(); renderRoute(path + link.search, true);
 });
 
 modalClose?.addEventListener('click', closeModal);
 modal?.addEventListener('click', (event) => { if (event.target === modal) closeModal(); });
-window.addEventListener('popstate', () => renderRoute(window.location.pathname));
+window.addEventListener('popstate', () => renderRoute(stripBase(window.location.pathname)));
 
 const heroForm = document.querySelector('[data-hero-form]');
 heroForm?.addEventListener('submit', (event) => {
@@ -159,4 +199,7 @@ heroForm?.addEventListener('submit', (event) => {
 });
 
 bindInquiryForms();
-if (window.location.pathname !== '/') renderRoute(window.location.pathname);
+normalizeInternalLinks();
+bindLibrarySearch();
+const initialPath = stripBase(window.location.pathname);
+if (initialPath !== '/') renderRoute(initialPath);

@@ -1,0 +1,31 @@
+{
+  "path": "/community/stories",
+  "eyebrow": "COMMUNITY STORIES",
+  "title": "What people say about beginning again",
+  "intro": "Short, anonymized reflections about finding language, setting boundaries, and returning to purpose.",
+  "imageKey": "dreams",
+  "sections": [
+    {
+      "heading": "“I finally named the question.”",
+      "body": "A dream conversation helped one visitor move from confusion to a useful next step."
+    },
+    {
+      "heading": "“I needed less fear, not more.”",
+      "body": "A grounding session made room for calm choices at home."
+    },
+    {
+      "heading": "“I could honor my family and still choose.”",
+      "body": "An ancestral conversation became a bridge rather than a burden."
+    }
+  ],
+  "links": [
+    {
+      "path": "/guidance",
+      "label": "Find your service"
+    },
+    {
+      "path": "/contact",
+      "label": "Share your question"
+    }
+  ]
+}

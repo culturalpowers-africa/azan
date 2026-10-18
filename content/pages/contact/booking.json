@@ -1,0 +1,31 @@
+{
+  "path": "/contact/booking",
+  "eyebrow": "BOOKING",
+  "title": "Find the right first conversation",
+  "intro": "Use the contact form to tell us what is happening and which kind of guidance sounds closest.",
+  "imageKey": "prosperity",
+  "sections": [
+    {
+      "heading": "Choose a topic",
+      "body": "The form helps route your question to the right service."
+    },
+    {
+      "heading": "Share selectively",
+      "body": "A short description is enough to begin."
+    },
+    {
+      "heading": "Confirm together",
+      "body": "Availability and fit are discussed directly over WhatsApp."
+    }
+  ],
+  "links": [
+    {
+      "path": "/contact",
+      "label": "Prepare a message"
+    },
+    {
+      "path": "/faq",
+      "label": "Read common questions"
+    }
+  ]
+}
