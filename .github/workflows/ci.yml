@@ -23,5 +23,9 @@ jobs:
           cache: npm
       - name: Install dependencies
         run: npm ci
+      - name: Validate content contracts
+        run: npm run check:content
       - name: Run production smoke tests
         run: npm test
+      - name: Audit production dependencies
+        run: npm audit --omit=dev --audit-level=high

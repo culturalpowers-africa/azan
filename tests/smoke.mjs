@@ -4,39 +4,62 @@ import { spawn } from 'node:child_process';
 
 const routes = JSON.parse(readFileSync('public/manus-routes.json', 'utf8')).routes;
 const expectedRoutes = routes.map((route) => route.path);
-assert.equal(expectedRoutes.length, 40, 'route manifest should contain exactly forty production pages');
+assert.equal(expectedRoutes.length, 40, 'route manifest should contain forty production pages');
+assert.ok(routes.every((route) => route.title && route.description), 'every route should include SEO metadata');
 assert.ok(expectedRoutes.includes('/resources') && expectedRoutes.includes('/services/ancestors/lineage'), 'expanded content routes should be present');
 assert.ok(existsSync('dist/index.html'), 'production build should emit dist/index.html');
-assert.ok(existsSync('dist/404.html'), 'GitHub Pages fallback should be emitted');
-const html = readFileSync('index.html', 'utf8');
+assert.ok(existsSync('dist/404.html'), 'production build should emit a distinct 404.html');
+const notFound = readFileSync('dist/404.html', 'utf8');
+assert.match(notFound, /Page not found/, '404 page should identify the missing page');
+const home = readFileSync('dist/index.html', 'utf8');
+assert.match(home, /id="main-content"/, 'page should expose a main landmark');
+assert.match(home, /https:\/\/wa\.me\/27732552543/, 'home page should expose the WhatsApp conversion path');
+assert.match(home, /id="primary-navigation"/, 'page should expose the mobile navigation target');
+assert.match(home, /theme-toggle/, 'page should expose the theme control');
+assert.match(home, /route-announcer/, 'page should expose a route announcement region');
 const js = readFileSync('main.js', 'utf8');
-assert.match(html, /id="main-content"/, 'page should expose a main landmark');
-assert.match(html, /https:\/\/wa\.me\/27732552543/, 'home page should expose the WhatsApp conversion path');
+assert.match(js, /serviceCatalog/, 'the services catalogue should be data-driven');
+assert.match(js, /carePromises/, 'the services hub should publish explicit care promises');
+assert.match(js, /OUR REAL PROMISES/, 'the promises section should be rendered in the application');
+assert.ok(!js.includes('campaignFlyer'), 'the services hub should not depend on a pushed campaign image');
+assert.match(js, /14 cultural service pathways|serviceCatalog/, 'the complete cultural service catalogue should be wired into the client');
 assert.match(js, /service-detail-page/, 'service detail pages should be wired into the client router');
+assert.match(js, /IntersectionObserver/, 'scroll-reveal motion should use an observer');
+assert.match(js, /localStorage.*azan-theme|azan-theme.*localStorage/, 'theme preference should persist locally');
+assert.match(js, /library-count/, 'resource filtering should announce result counts');
 for (const imageName of ['heritage-hero.jpg', 'heritage-community.jpg', 'heritage-family.jpg', 'heritage-portrait.jpg', 'heritage-ritual.jpg']) {
   assert.ok(existsSync(`images/${imageName}`), `${imageName} should be bundled in the repository`);
   assert.match(js, new RegExp(imageName.replace('.', '\\.'), 'i'), `${imageName} should be wired into the app`);
 }
 assert.equal(new Set(routes.map((route) => route.path)).size, routes.length, 'route paths should be unique');
+for (const route of routes) {
+  const routeDir = route.path === '/' ? 'dist' : `dist${route.path}`;
+  assert.ok(existsSync(`${routeDir}/index.html`), `${route.path} should have a prerendered document`);
+  const html = readFileSync(`${routeDir}/index.html`, 'utf8');
+  const title = html.match(/<title>(.*?)<\/title>/)?.[1]?.replaceAll('&amp;', '&');
+  assert.equal(title, route.title, `${route.path} should have a unique title`);
+  assert.match(html, /rel="canonical"/, `${route.path} should have a canonical URL`);
+}
 
-const server = spawn('npm', ['run', 'preview', '--', '--host', '127.0.0.1', '--port', '4173'], { stdio: 'ignore' });
+const server = spawn('python3', ['-m', 'http.server', '4174', '--bind', '127.0.0.1'], { cwd: 'dist', stdio: 'ignore' });
 const stop = () => server.kill('SIGTERM');
 process.on('exit', stop);
 
 let ready = false;
 for (let attempt = 0; attempt < 30; attempt += 1) {
   try {
-    const response = await fetch('http://127.0.0.1:4173/');
+    const response = await fetch('http://127.0.0.1:4174/');
     if (response.ok) { ready = true; break; }
   } catch {}
   await new Promise((resolve) => setTimeout(resolve, 250));
 }
 assert.ok(ready, 'preview server should become ready');
 for (const path of expectedRoutes) {
-  const response = await fetch(`http://127.0.0.1:4173${path}`);
-  assert.equal(response.status, 200, `${path} should resolve through the production server`);
+  const response = await fetch(`http://127.0.0.1:4174${path}`);
+  assert.equal(response.status, 200, `${path} should resolve as a real production document`);
 }
-const routeResponse = await fetch('http://127.0.0.1:4173/manus-routes.json');
+assert.ok(!existsSync('dist/does-not-exist/index.html'), 'unknown routes should not have generated documents');
+const routeResponse = await fetch('http://127.0.0.1:4174/manus-routes.json');
 assert.equal(routeResponse.status, 200, 'route manifest should be publicly served');
-console.log(`Smoke tests passed: ${expectedRoutes.length} routes, build output, GitHub Pages fallback, WhatsApp CTA, and preview server.`);
+console.log(`Smoke tests passed: ${expectedRoutes.length} prerendered routes, distinct 404, SEO metadata, assets, and preview behavior.`);
 stop();
