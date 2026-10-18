@@ -19,12 +19,13 @@ assert.match(home, /theme-toggle/, 'page should expose the theme control');
 assert.match(home, /route-announcer/, 'page should expose a route announcement region');
 const js = readFileSync('main.js', 'utf8');
 assert.match(js, /serviceCatalog/, 'the services catalogue should be data-driven');
+assert.ok(!js.includes('campaignFlyer'), 'the services hub should not depend on a pushed campaign image');
 assert.match(js, /14 cultural service pathways|serviceCatalog/, 'the complete cultural service catalogue should be wired into the client');
 assert.match(js, /service-detail-page/, 'service detail pages should be wired into the client router');
 assert.match(js, /IntersectionObserver/, 'scroll-reveal motion should use an observer');
 assert.match(js, /localStorage.*azan-theme|azan-theme.*localStorage/, 'theme preference should persist locally');
 assert.match(js, /library-count/, 'resource filtering should announce result counts');
-for (const imageName of ['heritage-hero.jpg', 'heritage-community.jpg', 'heritage-family.jpg', 'heritage-portrait.jpg', 'heritage-ritual.jpg', 'campaign-flyer.jpg']) {
+for (const imageName of ['heritage-hero.jpg', 'heritage-community.jpg', 'heritage-family.jpg', 'heritage-portrait.jpg', 'heritage-ritual.jpg']) {
   assert.ok(existsSync(`images/${imageName}`), `${imageName} should be bundled in the repository`);
   assert.match(js, new RegExp(imageName.replace('.', '\\.'), 'i'), `${imageName} should be wired into the app`);
 }
