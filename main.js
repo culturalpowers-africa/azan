@@ -4,6 +4,7 @@ import communityImage from './images/heritage-community.jpg';
 import familyImage from './images/heritage-family.jpg';
 import portraitImage from './images/heritage-portrait.jpg';
 import ritualImage from './images/heritage-ritual.jpg';
+import campaignFlyer from './images/campaign-flyer.jpg';
 
 const BASE_PREFIX = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
 const routeHref = (path) => `${BASE_PREFIX}${path}`;
@@ -72,6 +73,25 @@ const services = {
   }
 };
 
+const serviceCatalog = [
+  { id: 'dreams', category: 'Reflection', icon: '◔', title: 'Dream interpretation', summary: 'Explore recurring images, feelings, symbols, and memories without a one-size-fits-all dictionary.' },
+  { id: 'love-clarity', category: 'Relationships', icon: '♧', title: 'Love and relationship clarity', summary: 'Create space for honest communication, boundaries, healing, and your next grounded choice.' },
+  { id: 'marriage-support', category: 'Relationships', icon: '∞', title: 'Marriage and partnership support', summary: 'Reflect on distance, conflict, trust, and the conversations that may help you reconnect.' },
+  { id: 'family-peace', category: 'Relationships', icon: '⌂', title: 'Family and in-law peace', summary: 'Work through family tension with boundaries, perspective, and practical communication.' },
+  { id: 'ancestral-connection', category: 'Ancestral work', icon: '✣', title: 'Ancestral connection', summary: 'Make room for lineage, memory, belonging, grief, and the wisdom you carry forward.' },
+  { id: 'business-growth', category: 'Purpose', icon: '◫', title: 'Business and purpose', summary: 'Bring a stalled plan or decision and leave with clearer priorities and practical next steps.' },
+  { id: 'protection-grounding', category: 'Grounding', icon: '⌁', title: 'Protection and grounding', summary: 'Build calmer daily and home practices without fear, dependency, or pressure to buy materials.' },
+  { id: 'luck-opportunity', category: 'Purpose', icon: '✧', title: 'Opportunity and momentum', summary: 'Reflect on new doors, readiness, and the real actions that turn possibility into movement.' },
+  { id: 'release-patterns', category: 'Grounding', icon: '↝', title: 'Release harmful patterns', summary: 'Name what keeps repeating and choose supportive boundaries, habits, and sources of care.' },
+  { id: 'confidence', category: 'Reflection', icon: '◇', title: 'Spiritual confidence', summary: 'Reconnect with your values, intuition, and agency without fixed-fate predictions.' },
+  { id: 'new-love', category: 'Relationships', icon: '♡', title: 'New love and readiness', summary: 'Clarify what you want, what you will not repeat, and how to approach connection with care.' },
+  { id: 'home-peace', category: 'Grounding', icon: '⌂', title: 'Peace in the home', summary: 'Create a steadier atmosphere through simple rituals, communication, and practical care.' },
+  { id: 'jealousy-conflict', category: 'Relationships', icon: '≋', title: 'Jealousy and conflict', summary: 'Understand the pattern, protect your boundaries, and prepare a calmer conversation.' },
+  { id: 'future-direction', category: 'Purpose', icon: '→', title: 'Future direction', summary: 'Turn a broad question about your future into one honest, manageable next step.' }
+];
+
+const serviceCatalogCard = (service) => `<article class="catalog-card" data-catalog-card data-category="${service.category}"><div class="catalog-icon" aria-hidden="true">${service.icon}</div><div><p class="eyebrow">${service.category.toUpperCase()}</p><h3>${service.title}</h3><p>${service.summary}</p><a class="text-button" href="/contact?topic=${encodeURIComponent(service.title.toLowerCase())}">Explore this path <span aria-hidden="true">→</span></a></div></article>`;
+
 const routeMeta = {
   '/': { title: 'Ancestral Path — Home', description: 'Reflective spiritual guidance, cultural learning, and practical care from Ancestral Path.' },
   '/guidance': { title: 'Ancestral Path — Guidance', description: 'Explore grounded, reflective guidance for dreams, relationships, protection, prosperity, and ancestral connection.' },
@@ -102,7 +122,7 @@ const detailPage = (key) => {
   </section>`;
 };
 
-const guidancePage = () => `<section class="route-page"><div class="route-intro"><a class="back-link" href="/">← Home</a><p class="eyebrow">PRIVATE SPIRITUAL GUIDANCE</p><h1>Choose the question<br /><em>that is calling you.</em></h1><p>These services are designed as reflective conversations: practical, personal, and free from guarantees or fear-based pressure.</p></div><div class="route-service-grid">${Object.entries(services).map(([key, service]) => serviceCard(key, service)).join('')}</div><div class="route-callout"><p class="eyebrow">A NOTE ON CARE</p><h2>You stay in charge of your story.</h2><p>We will never tell you that you are doomed, demand urgent payment, or replace medical, legal, or mental-health care with spiritual language.</p><a class="outline-button" href="/contact">Ask a question <span>→</span></a></div></section>`;
+const guidancePage = () => `<section class="route-page services-hub"><div class="route-intro"><a class="back-link" href="/">← Home</a><p class="eyebrow">PRIVATE SPIRITUAL GUIDANCE</p><h1>Choose the question<br /><em>that is calling you.</em></h1><p>Browse the full catalogue, filter by what you are carrying, and choose a conversation that keeps your agency at the centre.</p></div><div class="services-hub-layout"><div class="catalog-panel"><div class="catalog-toolbar" role="toolbar" aria-label="Filter services"><button class="filter-chip is-active" type="button" data-catalog-filter="All" aria-pressed="true">All <span>${serviceCatalog.length}</span></button>${['Reflection','Relationships','Ancestral work','Purpose','Grounding'].map((category) => `<button class="filter-chip" type="button" data-catalog-filter="${category}" aria-pressed="false">${category} <span>${serviceCatalog.filter((item) => item.category === category).length}</span></button>`).join('')}</div><p class="catalog-status" data-catalog-status role="status" aria-live="polite"></p><div class="catalog-grid">${serviceCatalog.map(serviceCatalogCard).join('')}</div><p class="catalog-empty" data-catalog-empty hidden>No pathways match that filter. Return to “All” to see the full catalogue.</p></div><aside class="campaign-panel"><img src="${campaignFlyer}" alt="Campaign artwork supplied by Ancestral Path featuring dream interpretation and a WhatsApp contact number" loading="lazy" /><div><p class="eyebrow">CAMPAIGN ARTWORK</p><h2>Start with the question you can say out loud.</h2><p>Bring only what feels comfortable. This is a reflective service, not a promise to control another person or guarantee an outcome.</p><a class="gold-button inline-button" href="/contact">Start a private conversation <span aria-hidden="true">↗</span></a></div></aside></div><div class="route-callout"><p class="eyebrow">A NOTE ON CARE</p><h2>You stay in charge of your story.</h2><p>We will never tell you that you are doomed, demand urgent payment, or replace medical, legal, or mental-health care with spiritual language.</p><a class="outline-button" href="/contact">Ask a question <span>→</span></a></div></section>`;
 
 const dreamsPage = () => `<section class="route-page editorial-route"><div class="route-intro"><a class="back-link" href="/">← Home</a><p class="eyebrow">THE LANGUAGE OF NIGHT</p><h1>Dreams leave clues<br /><em>in the morning.</em></h1><p>Start with the dream you remember most clearly. A dream reading gives you a grounded way to explore symbols, emotion, memory, and the choices waiting underneath.</p></div><div class="dream-feature" style="background-image:linear-gradient(90deg, rgba(8,9,9,.92), rgba(8,9,9,.3)), url('${assets.dreams}')"><div><p class="eyebrow">DREAM INTERPRETATION SESSION</p><h2>Bring the image<br />that stayed with you.</h2><a class="gold-button inline-button" href="/contact?topic=dreams">Book a dream conversation <span>↗</span></a></div></div><div class="three-column-notes"><div><span>01</span><h3>Remember</h3><p>Write down the scene, feeling, people, colors, and what happened immediately before waking.</p></div><div><span>02</span><h3>Explore</h3><p>We look for personal meaning rather than applying a one-size-fits-all dream dictionary.</p></div><div><span>03</span><h3>Carry forward</h3><p>Leave with a question or next step you can bring into your everyday life.</p></div></div></section>`;
 
@@ -202,6 +222,30 @@ themeToggle?.addEventListener('click', () => {
   try { localStorage.setItem('azan-theme', next); } catch {}
 });
 
+const bindCatalogFilters = () => {
+  const buttons = [...document.querySelectorAll('[data-catalog-filter]')];
+  if (!buttons.length) return;
+  const cards = [...document.querySelectorAll('[data-catalog-card]')];
+  const status = document.querySelector('[data-catalog-status]');
+  const empty = document.querySelector('[data-catalog-empty]');
+  const update = (category) => {
+    const visible = cards.filter((card) => {
+      const matches = category === 'All' || card.dataset.category === category;
+      card.hidden = !matches;
+      return matches;
+    });
+    buttons.forEach((button) => {
+      const active = button.dataset.catalogFilter === category;
+      button.classList.toggle('is-active', active);
+      button.setAttribute('aria-pressed', String(active));
+    });
+    if (status) status.textContent = `${visible.length} ${visible.length === 1 ? 'service' : 'services'} shown`;
+    if (empty) empty.hidden = visible.length > 0;
+  };
+  buttons.forEach((button) => button.addEventListener('click', () => update(button.dataset.catalogFilter)));
+  update('All');
+};
+
 const bindInquiryForms = () => {
   document.querySelectorAll('[data-inquiry-form]').forEach((inquiryForm) => {
     const requestedTopic = new URLSearchParams(window.location.search).get('topic');
@@ -254,6 +298,7 @@ const renderRoute = (path, push = false) => {
   bindInquiryForms();
   bindHeroForm();
   bindLibrarySearch();
+  bindCatalogFilters();
   prepareMotionTargets();
   window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
   const heading = main?.querySelector('h1');
@@ -304,6 +349,7 @@ bindInquiryForms();
 bindHeroForm();
 normalizeInternalLinks();
 bindLibrarySearch();
+bindCatalogFilters();
 prepareMotionTargets();
 const initialPath = stripBase(window.location.pathname);
 if (initialPath !== '/') renderRoute(initialPath);
