@@ -17,6 +17,7 @@ heroForm?.addEventListener('submit', (event) => {
 inquiryForm?.addEventListener('submit', (event) => {
   event.preventDefault();
   const data = new FormData(inquiryForm);
+  const submitButton = inquiryForm.querySelector('button[type="submit"]');
   const topic = data.get('topic');
   const message = String(data.get('message') || '').trim();
   const text = [
@@ -24,9 +25,19 @@ inquiryForm?.addEventListener('submit', (event) => {
     message ? 'Here is a little about my question: ' + message : '',
     'Please let me know how to begin.'
   ].filter(Boolean).join('\n\n');
+  if (submitButton) {
+    submitButton.disabled = true;
+    submitButton.querySelector('span:first-child').textContent = 'Opening WhatsApp…';
+  }
   const url = 'https://wa.me/27732552543?text=' + encodeURIComponent(text);
   window.open(url, '_blank', 'noopener,noreferrer');
   if (formStatus) formStatus.textContent = 'Your message is ready in WhatsApp — we look forward to hearing from you.';
+  window.setTimeout(() => {
+    if (submitButton) {
+      submitButton.disabled = false;
+      submitButton.querySelector('span:first-child').textContent = 'Prepare my WhatsApp message';
+    }
+  }, 1400);
 });
 
 const updateHeader = () => {
