@@ -17,6 +17,6 @@
     "generate:load-fixture": "node scripts/generate-load-fixture.mjs"
   },
   "devDependencies": {
-    "vite": "6.4.3"
+    "vite": "8.3.4"
   }
 }
