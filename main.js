@@ -3,6 +3,16 @@ import './styles.css';
 const inquiryForm = document.querySelector('[data-inquiry-form]');
 const formStatus = document.querySelector('[data-form-status]');
 const header = document.querySelector('[data-header]');
+const heroForm = document.querySelector('[data-hero-form]');
+
+heroForm?.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const question = String(new FormData(heroForm).get('question') || '').trim();
+  const text = question
+    ? `Hello Ancestral Path, I have a question about ${question}. Please let me know how to begin.`
+    : 'Hello Ancestral Path, I would like to begin a guidance conversation.';
+  window.open('https://wa.me/27732552543?text=' + encodeURIComponent(text), '_blank', 'noopener,noreferrer');
+});
 
 inquiryForm?.addEventListener('submit', (event) => {
   event.preventDefault();
