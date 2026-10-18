@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#080909" />
     <meta name="description" content="Ancestral Path offers dream interpretation and respectful spiritual guidance for love, protection, peace, and purpose." />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta name="color-scheme" content="dark" />
     <title>Ancestral Path — Our roots. Your spirit. Your future.</title>
   </head>
   <body>
@@ -15,13 +17,14 @@
           <span class="brand-symbol" aria-hidden="true"><span></span><span></span><span></span></span>
           <span class="brand-copy"><strong>Ancestral Path</strong><small>OUR ROOTS · OUR SPIRIT · OUR FUTURE</small></span>
         </a>
-        <nav class="site-nav" aria-label="Primary navigation">
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation"><span class="menu-toggle-label">Menu</span><span aria-hidden="true">☰</span></button>
+        <nav class="site-nav" id="primary-navigation" aria-label="Primary navigation">
           <a class="is-active" href="#top">Home</a><a href="/guidance">Guidance</a><a href="/dreams">Dreams</a><a href="/approach">Our approach</a><a href="/contact">Contact</a>
         </nav>
         <div class="header-actions"><span class="icon-button" aria-hidden="true">◐</span><a class="login-link" href="/contact">Begin a session</a></div>
       </header>
 
-      <main id="main-content">
+      <main id="main-content" tabindex="-1">
         <section class="hero-card" aria-labelledby="hero-title">
           <div class="hero-overlay"></div>
           <div class="hero-copy">
@@ -70,12 +73,13 @@
 
         <section class="contact-section" id="contact" aria-labelledby="contact-title">
           <div class="contact-copy"><p class="eyebrow">BEGIN YOUR CONVERSATION</p><h2 id="contact-title">A simple hello<br /><em>is enough.</em></h2><p>Tell us what has been on your mind. We will meet your question with care and help you find the right place to begin.</p><div class="contact-number"><span class="whatsapp-badge">✆</span><div><small>WhatsApp us directly</small><a href="https://wa.me/27732552543" target="_blank" rel="noreferrer">+27 73 255 2543</a></div></div></div>
-          <form class="inquiry-form" data-inquiry-form><label for="topic">What would you like guidance on?</label><div class="select-wrap"><select id="topic" name="topic"><option value="dream interpretation">Dream interpretation</option><option value="love or relationships">Love or relationships</option><option value="protection and clearing">Protection and clearing</option><option value="prosperity and purpose">Prosperity and purpose</option><option value="ancestral connection">Ancestral connection</option></select><span>⌄</span></div><label for="message">A little about your question <small>(optional)</small></label><textarea id="message" name="message" rows="3" placeholder="Share only what feels comfortable..."></textarea><button class="gold-button" type="submit">Prepare my WhatsApp message <span>↗</span></button><p class="form-status" data-form-status role="status" aria-live="polite"></p></form>
+          <form class="inquiry-form" data-inquiry-form><label for="topic">What would you like guidance on?</label><div class="select-wrap"><select id="topic" name="topic"><option value="dream interpretation">Dream interpretation</option><option value="love or relationships">Love or relationships</option><option value="protection and clearing">Protection and clearing</option><option value="prosperity and purpose">Prosperity and purpose</option><option value="ancestral connection">Ancestral connection</option></select><span>⌄</span></div><label for="message">A little about your question <small>(optional)</small></label><textarea id="message" name="message" rows="3" placeholder="Share only what feels comfortable..."></textarea><button class="gold-button" type="submit"><span data-submit-label>Prepare my WhatsApp message</span><span aria-hidden="true">↗</span></button><p class="form-notice">This opens WhatsApp in a new tab. Please do not send medical records, passwords, or information you would not want processed by Meta.</p><p class="form-status" data-form-status role="status" aria-live="polite"></p></form>
         </section>
       </main>
 
-      <footer class="site-footer"><div class="footer-brand"><a class="brand" href="#top"><span class="brand-symbol" aria-hidden="true"><span></span><span></span><span></span></span><span class="brand-copy"><strong>Ancestral Path</strong><small>OUR ROOTS · OUR SPIRIT · OUR FUTURE</small></span></a><p>For the questions that do not fit in ordinary words.</p></div><div class="footer-links"><div><strong>Quick links</strong><a href="/guidance">Guidance</a><a href="/dreams">Dreams</a><a href="/approach">Our approach</a><a href="/contact">Contact</a></div><div><strong>Stay connected</strong><span>Private guidance, held with care.</span><a href="https://wa.me/27732552543" target="_blank" rel="noreferrer">WhatsApp ↗</a></div></div><div class="footer-bottom"><span>© 2026 Ancestral Path. All rights reserved.</span><span>Privacy &nbsp;·&nbsp; Terms &nbsp;·&nbsp; Contact</span></div></footer>
+      <footer class="site-footer"><div class="footer-brand"><a class="brand" href="#top"><span class="brand-symbol" aria-hidden="true"><span></span><span></span><span></span></span><span class="brand-copy"><strong>Ancestral Path</strong><small>OUR ROOTS · OUR SPIRIT · OUR FUTURE</small></span></a><p>For the questions that do not fit in ordinary words.</p></div><div class="footer-links"><div><strong>Quick links</strong><a href="/guidance">Guidance</a><a href="/dreams">Dreams</a><a href="/approach">Our approach</a><a href="/contact">Contact</a></div><div><strong>Stay connected</strong><span>Private guidance, held with care.</span><a href="https://wa.me/27732552543" target="_blank" rel="noreferrer">WhatsApp ↗</a></div></div><div class="footer-bottom"><span>© 2026 Ancestral Path. All rights reserved.</span><span><a href="/privacy">Privacy</a> &nbsp;·&nbsp; <a href="/terms">Terms</a> &nbsp;·&nbsp; <a href="/accessibility">Accessibility</a></span></div></footer>
     </div>
+    <div class="route-announcer" aria-live="polite" aria-atomic="true"></div>
     <dialog class="service-modal" id="service-modal" aria-labelledby="service-modal-title">
       <button class="modal-close" type="button" data-modal-close aria-label="Close service details">×</button>
       <div data-modal-content></div>

@@ -15,6 +15,9 @@ const homeMarkup = main?.innerHTML || '';
 const modal = document.querySelector('#service-modal');
 const modalContent = document.querySelector('[data-modal-content]');
 const modalClose = document.querySelector('[data-modal-close]');
+const announcer = document.querySelector('.route-announcer');
+const menuToggle = document.querySelector('.menu-toggle');
+const siteNav = document.querySelector('#primary-navigation');
 
 const assets = {
   dreams: ritualImage,
@@ -67,6 +70,20 @@ const services = {
   }
 };
 
+const routeMeta = {
+  '/': { title: 'Ancestral Path — Home', description: 'Reflective spiritual guidance, cultural learning, and practical care from Ancestral Path.' },
+  '/guidance': { title: 'Ancestral Path — Guidance', description: 'Explore grounded, reflective guidance for dreams, relationships, protection, prosperity, and ancestral connection.' },
+  '/dreams': { title: 'Ancestral Path — Dream Interpretation', description: 'Explore dreams through memory, emotion, symbols, and practical reflection.' },
+  '/approach': { title: 'Ancestral Path — Our Approach', description: 'Learn how Ancestral Path keeps spiritual reflection respectful, grounded, and centered on your agency.' },
+  '/contact': { title: 'Ancestral Path — Contact', description: 'Begin a private conversation with Ancestral Path and choose the contact path that works for you.' },
+  '/services/dreams': { title: 'Ancestral Path — Dream Interpretation Service', description: 'A grounded dream interpretation conversation for recurring dreams, symbols, feelings, and reflection.' },
+  '/services/love': { title: 'Ancestral Path — Love & Relationship Guidance', description: 'Reflective support for relationship uncertainty, communication, boundaries, and your next honest step.' },
+  '/services/protection': { title: 'Ancestral Path — Protection & Clearing', description: 'Grounded spiritual support for heavy feelings, home-care, daily rhythm, and practical wellbeing.' },
+  '/services/prosperity': { title: 'Ancestral Path — Prosperity & Purpose', description: 'Reflective support for business decisions, career transitions, purpose, and practical momentum.' },
+  '/services/ancestors': { title: 'Ancestral Path — Ancestral Connection', description: 'A respectful conversation about family memory, lineage, belonging, grief, and present-day choices.' }
+};
+contentPages.forEach((page) => { routeMeta[page.path] = { title: `Ancestral Path — ${page.title}`, description: page.intro }; });
+
 const serviceCard = (key, service) => `
   <article class="route-service-card">
     <div class="route-service-image" style="background-image:url('${service.image}')"></div>
@@ -89,7 +106,7 @@ const dreamsPage = () => `<section class="route-page editorial-route"><div class
 
 const approachPage = () => `<section class="route-page editorial-route"><div class="route-intro"><a class="back-link" href="/">← Home</a><p class="eyebrow">OUR APPROACH</p><h1>Warm guidance.<br /><em>Clear boundaries.</em></h1><p>Spiritual work can be beautiful without being vague. Our approach is reflective, culturally respectful, and connected to practical life.</p></div><div class="principles-route"><div class="principle-route"><span>01</span><h2>Listen first.</h2><p>Your lived experience sets the direction. We ask questions before we offer interpretation.</p></div><div class="principle-route"><span>02</span><h2>Stay grounded.</h2><p>Insight should help you make a clearer decision, not make you more afraid or dependent.</p></div><div class="principle-route"><span>03</span><h2>Respect your agency.</h2><p>You can pause, question, or say no. No service is more important than your wellbeing.</p></div></div><div class="route-callout warm-callout"><p class="eyebrow">A SIMPLE PROMISE</p><h2>No fear. No fixed fate. No pressure.</h2><p>Just a private space to reflect on what you are carrying and choose what to do with it next.</p><a class="gold-button inline-button" href="/contact">Talk with us <span>↗</span></a></div></section>`;
 
-const contactPage = () => `<section class="route-page contact-route"><div class="route-intro"><a class="back-link" href="/">← Home</a><p class="eyebrow">BEGIN YOUR CONVERSATION</p><h1>A simple hello<br /><em>is enough.</em></h1><p>Choose a topic, share only what feels comfortable, and prepare a private WhatsApp message in one step.</p></div><div class="contact-route-grid"><div class="contact-route-image" style="background-image:url('${assets.ancestors}')"></div><div class="contact-route-card"><form class="inquiry-form" data-inquiry-form><label for="topic">What would you like guidance on?</label><div class="select-wrap"><select id="topic" name="topic"><option value="dream interpretation">Dream interpretation</option><option value="love or relationships">Love or relationships</option><option value="protection and clearing">Protection and clearing</option><option value="prosperity and purpose">Prosperity and purpose</option><option value="ancestral connection">Ancestral connection</option></select><span>⌄</span></div><label for="message">A little about your question <small>(optional)</small></label><textarea id="message" name="message" rows="6" placeholder="Share only what feels comfortable..."></textarea><button class="gold-button" type="submit">Prepare my WhatsApp message <span>↗</span></button><p class="form-status" data-form-status role="status" aria-live="polite"></p></form><div class="contact-route-number"><small>WhatsApp directly</small><a href="https://wa.me/27732552543" target="_blank" rel="noreferrer">+27 73 255 2543</a></div></div></div></section>`;
+const contactPage = () => `<section class="route-page contact-route"><div class="route-intro"><a class="back-link" href="/">← Home</a><p class="eyebrow">BEGIN YOUR CONVERSATION</p><h1>A simple hello<br /><em>is enough.</em></h1><p>Choose a topic, share only what feels comfortable, and prepare a private WhatsApp message in one step.</p></div><div class="contact-route-grid"><div class="contact-route-image" style="background-image:url('${assets.ancestors}')"></div><div class="contact-route-card"><form class="inquiry-form" data-inquiry-form><label for="topic">What would you like guidance on?</label><div class="select-wrap"><select id="topic" name="topic"><option value="dream interpretation">Dream interpretation</option><option value="love or relationships">Love or relationships</option><option value="protection and clearing">Protection and clearing</option><option value="prosperity and purpose">Prosperity and purpose</option><option value="ancestral connection">Ancestral connection</option></select><span>⌄</span></div><label for="message">A little about your question <small>(optional)</small></label><textarea id="message" name="message" rows="6" placeholder="Share only what feels comfortable..."></textarea><button class="gold-button" type="submit"><span data-submit-label>Prepare my WhatsApp message</span><span aria-hidden="true">↗</span></button><p class="form-notice">This opens WhatsApp in a new tab. Please do not send medical records, passwords, or information you would not want processed by Meta.</p><p class="form-status" data-form-status role="status" aria-live="polite"></p></form><div class="contact-route-number"><small>WhatsApp directly</small><a href="https://wa.me/27732552543" target="_blank" rel="noreferrer">+27 73 255 2543</a></div></div></div></section>`;
 
 const imageForPage = (page) => assets[page.imageKey] || assets.ancestors;
 
@@ -110,7 +127,7 @@ const routeContent = (path) => {
   if (serviceKey) return detailPage(serviceKey);
   const contentPage = contentPages.find((page) => page.path === path);
   if (contentPage) return genericPage(contentPage);
-  return homeMarkup;
+  return `<section class="route-page route-not-found"><p class="eyebrow">404 · PAGE NOT FOUND</p><h1>That path has<br /><em>gone quiet.</em></h1><p>Try returning to the home page or begin with guidance.</p><a class="gold-button inline-button" href="/">Return home <span aria-hidden="true">→</span></a></section>`;
 };
 
 const setActiveNav = (path) => {
@@ -153,10 +170,10 @@ const bindInquiryForms = () => {
       const topic = data.get('topic');
       const message = String(data.get('message') || '').trim();
       const text = [`Hello Ancestral Path, I would like guidance on ${topic}.`, message ? `Here is a little about my question: ${message}` : '', 'Please let me know how to begin.'].filter(Boolean).join('\n\n');
-      if (submitButton) { submitButton.disabled = true; submitButton.querySelector('span:first-child').textContent = 'Opening WhatsApp…'; }
-      window.open('https://wa.me/27732552543?text=' + encodeURIComponent(text), '_blank', 'noopener,noreferrer');
-      if (status) status.textContent = 'Your message is ready in WhatsApp — we look forward to hearing from you.';
-      window.setTimeout(() => { if (submitButton) { submitButton.disabled = false; submitButton.querySelector('span:first-child').textContent = 'Prepare my WhatsApp message'; } }, 1400);
+      if (submitButton) { submitButton.disabled = true; submitButton.setAttribute('aria-busy', 'true'); const label = submitButton.querySelector('[data-submit-label]'); if (label) label.textContent = 'Opening WhatsApp…'; }
+      const popup = window.open('https://wa.me/27732552543?text=' + encodeURIComponent(text), '_blank', 'noopener,noreferrer');
+      if (status) status.textContent = popup ? 'Your message is ready in WhatsApp — we look forward to hearing from you.' : 'Your browser blocked the new tab. Use the WhatsApp link below to continue.';
+      window.setTimeout(() => { if (submitButton) { submitButton.disabled = false; submitButton.removeAttribute('aria-busy'); const label = submitButton.querySelector('[data-submit-label]'); if (label) label.textContent = 'Prepare my WhatsApp message'; } }, 1400);
     });
   });
 };
@@ -174,11 +191,20 @@ const renderRoute = (path, push = false) => {
   const cleanPath = path.split('?')[0].replace(/\/$/, '') || '/';
   if (push) window.history.pushState({}, '', routeHref(path));
   if (main) main.innerHTML = routeContent(cleanPath);
+  const metadata = routeMeta[cleanPath] || { title: 'Ancestral Path — Page not found', description: 'The page you requested could not be found.' };
+  document.title = metadata.title;
+  document.querySelector('meta[name="description"]')?.setAttribute('content', metadata.description);
+  document.querySelector('link[rel="canonical"]')?.setAttribute('href', window.location.href.split('?')[0]);
   normalizeInternalLinks();
   setActiveNav(cleanPath);
   bindInquiryForms();
+  bindHeroForm();
   bindLibrarySearch();
   window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+  const heading = main?.querySelector('h1');
+  if (heading) { heading.setAttribute('tabindex', '-1'); heading.focus({ preventScroll: true }); }
+  if (announcer) announcer.textContent = metadata.title;
+  closeMenu();
 };
 
 document.addEventListener('click', (event) => {
@@ -186,6 +212,7 @@ document.addEventListener('click', (event) => {
   if (serviceTrigger) { event.preventDefault(); openModal(serviceTrigger.dataset.servicePopout); return; }
   const link = event.target.closest('a');
   if (!link || link.target === '_blank' || link.origin !== window.location.origin) return;
+  if (link.hash && stripBase(link.pathname) === stripBase(window.location.pathname)) return;
   const path = stripBase(link.pathname);
   if (!path.startsWith('/')) return;
   event.preventDefault(); renderRoute(path + link.search, true);
@@ -195,15 +222,29 @@ modalClose?.addEventListener('click', closeModal);
 modal?.addEventListener('click', (event) => { if (event.target === modal) closeModal(); });
 window.addEventListener('popstate', () => renderRoute(stripBase(window.location.pathname)));
 
-const heroForm = document.querySelector('[data-hero-form]');
-heroForm?.addEventListener('submit', (event) => {
+const bindHeroForm = () => document.querySelector('[data-hero-form]')?.addEventListener('submit', (event) => {
   event.preventDefault();
+  const heroForm = event.currentTarget;
   const question = String(new FormData(heroForm).get('question') || '').trim();
   const text = question ? `Hello Ancestral Path, I have a question about ${question}. Please let me know how to begin.` : 'Hello Ancestral Path, I would like to begin a guidance conversation.';
   window.open('https://wa.me/27732552543?text=' + encodeURIComponent(text), '_blank', 'noopener,noreferrer');
 });
 
+const closeMenu = () => {
+  if (!menuToggle || !siteNav) return;
+  menuToggle.setAttribute('aria-expanded', 'false');
+  siteNav.classList.remove('is-open');
+};
+menuToggle?.addEventListener('click', () => {
+  const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
+  menuToggle.setAttribute('aria-expanded', String(!expanded));
+  siteNav?.classList.toggle('is-open', !expanded);
+  if (!expanded) siteNav?.querySelector('a')?.focus();
+});
+document.addEventListener('keydown', (event) => { if (event.key === 'Escape') closeMenu(); });
+
 bindInquiryForms();
+bindHeroForm();
 normalizeInternalLinks();
 bindLibrarySearch();
 const initialPath = stripBase(window.location.pathname);

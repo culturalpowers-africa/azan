@@ -2,163 +2,203 @@
   "routes": [
     {
       "path": "/",
-      "title": "Ancestral Path — Home"
+      "title": "Ancestral Path — Home",
+      "description": "Reflective spiritual guidance, cultural learning, and practical care from Ancestral Path."
     },
     {
       "path": "/guidance",
-      "title": "Ancestral Path — Guidance"
+      "title": "Ancestral Path — Guidance",
+      "description": "Explore grounded, reflective guidance for dreams, relationships, protection, prosperity, and ancestral connection."
     },
     {
       "path": "/dreams",
-      "title": "Ancestral Path — Dream Interpretation"
+      "title": "Ancestral Path — Dream Interpretation",
+      "description": "Explore dreams through memory, emotion, symbols, and practical reflection."
     },
     {
       "path": "/approach",
-      "title": "Ancestral Path — Our Approach"
+      "title": "Ancestral Path — Our Approach",
+      "description": "Learn how Ancestral Path keeps spiritual reflection respectful, grounded, and centered on your agency."
     },
     {
       "path": "/contact",
-      "title": "Ancestral Path — Contact"
+      "title": "Ancestral Path — Contact",
+      "description": "Begin a private conversation with Ancestral Path and choose the contact path that works for you."
     },
     {
       "path": "/services/dreams",
-      "title": "Ancestral Path — Dream Interpretation Service"
+      "title": "Ancestral Path — Dream Interpretation Service",
+      "description": "A grounded dream interpretation conversation for recurring dreams, symbols, feelings, and reflection."
     },
     {
       "path": "/services/love",
-      "title": "Ancestral Path — Love & Relationship Guidance"
+      "title": "Ancestral Path — Love & Relationship Guidance",
+      "description": "Reflective support for relationship uncertainty, communication, boundaries, and your next honest step."
     },
     {
       "path": "/services/protection",
-      "title": "Ancestral Path — Protection & Clearing"
+      "title": "Ancestral Path — Protection & Clearing",
+      "description": "Grounded spiritual support for heavy feelings, home-care, daily rhythm, and practical wellbeing."
     },
     {
       "path": "/services/prosperity",
-      "title": "Ancestral Path — Prosperity & Purpose"
+      "title": "Ancestral Path — Prosperity & Purpose",
+      "description": "Reflective support for business decisions, career transitions, purpose, and practical momentum."
     },
     {
       "path": "/services/ancestors",
-      "title": "Ancestral Path — Ancestral Connection"
+      "title": "Ancestral Path — Ancestral Connection",
+      "description": "A respectful conversation about family memory, lineage, belonging, grief, and present-day choices."
     },
     {
       "path": "/about",
-      "title": "Ancestral Path — A modern space for old questions"
+      "title": "Ancestral Path — A modern space for old questions",
+      "description": "Ancestral Path brings together reflective spiritual guidance, editorial learning, and a clear respect for personal agency."
     },
     {
       "path": "/about/method",
-      "title": "Ancestral Path — Three movements: listen, reflect, return"
+      "title": "Ancestral Path — Three movements: listen, reflect, return",
+      "description": "A simple framework keeps the work warm without letting it become vague."
     },
     {
       "path": "/about/practitioner",
-      "title": "Ancestral Path — A listening practice before a performance"
+      "title": "Ancestral Path — A listening practice before a performance",
+      "description": "The work begins with attention: to your question, your language, and the context that makes it yours."
     },
     {
       "path": "/about/values",
-      "title": "Ancestral Path — Care is a practice, not a promise"
+      "title": "Ancestral Path — Care is a practice, not a promise",
+      "description": "These are the standards behind every service, page, and conversation."
     },
     {
       "path": "/accessibility",
-      "title": "Ancestral Path — A calmer experience for more people"
+      "title": "Ancestral Path — A calmer experience for more people",
+      "description": "We are building Ancestral Path so visitors can read, navigate, and contact us in ways that work for them."
     },
     {
       "path": "/community",
-      "title": "Ancestral Path — A wider circle of learning and care"
+      "title": "Ancestral Path — A wider circle of learning and care",
+      "description": "Explore stories, gatherings, and resources for people who want reflection to remain connected to community."
     },
     {
       "path": "/community/events",
-      "title": "Ancestral Path — Gatherings for reflection and shared learning"
+      "title": "Ancestral Path — Gatherings for reflection and shared learning",
+      "description": "When live circles and workshops are available, this page will hold the details and registration link."
     },
     {
       "path": "/community/stories",
-      "title": "Ancestral Path — What people say about beginning again"
+      "title": "Ancestral Path — What people say about beginning again",
+      "description": "Short, anonymized reflections about finding language, setting boundaries, and returning to purpose."
     },
     {
       "path": "/contact/booking",
-      "title": "Ancestral Path — Find the right first conversation"
+      "title": "Ancestral Path — Find the right first conversation",
+      "description": "Use the contact form to tell us what is happening and which kind of guidance sounds closest."
     },
     {
       "path": "/contact/contact-faq",
-      "title": "Ancestral Path — Questions about reaching out"
+      "title": "Ancestral Path — Questions about reaching out",
+      "description": "A few practical answers for visitors who are deciding whether to send a message."
     },
     {
       "path": "/contact/whatsapp",
-      "title": "Ancestral Path — Begin privately, one message at a time"
+      "title": "Ancestral Path — Begin privately, one message at a time",
+      "description": "Our WhatsApp path is designed for a simple first step: choose a topic, share what feels comfortable, and ask what comes next."
     },
     {
       "path": "/faq",
-      "title": "Ancestral Path — Clear answers before you begin"
+      "title": "Ancestral Path — Clear answers before you begin",
+      "description": "A straightforward guide to sessions, boundaries, privacy, and what spiritual guidance can and cannot do."
     },
     {
       "path": "/journal",
-      "title": "Ancestral Path — Notes for the inner work of ordinary days"
+      "title": "Ancestral Path — Notes for the inner work of ordinary days",
+      "description": "Short, considered essays on dreams, relationships, home, ancestry, and purpose."
     },
     {
       "path": "/journal/ancestral-memory",
-      "title": "Ancestral Path — What family memory asks us to carry—and what it asks us to release"
+      "title": "Ancestral Path — What family memory asks us to carry—and what it asks us to release",
+      "description": "Lineage can be a source of belonging without becoming a weight you must carry alone."
     },
     {
       "path": "/journal/grounding-at-home",
-      "title": "Ancestral Path — Small rituals that make a home feel more settled"
+      "title": "Ancestral Path — Small rituals that make a home feel more settled",
+      "description": "Simple, low-pressure practices for creating a calmer rhythm where you live."
     },
     {
       "path": "/journal/prosperity-with-purpose",
-      "title": "Ancestral Path — Prosperity feels different when it serves a life you actually want"
+      "title": "Ancestral Path — Prosperity feels different when it serves a life you actually want",
+      "description": "A reflection on ambition, money, service, and choosing momentum that has meaning."
     },
     {
       "path": "/journal/relationship-boundaries",
-      "title": "Ancestral Path — Boundaries are a form of care, not a punishment"
+      "title": "Ancestral Path — Boundaries are a form of care, not a punishment",
+      "description": "A grounded reflection on saying yes, saying no, and making room for honest connection."
     },
     {
       "path": "/journal/understanding-dream-symbols",
-      "title": "Ancestral Path — Understanding dream symbols without a one-size-fits-all dictionary"
+      "title": "Ancestral Path — Understanding dream symbols without a one-size-fits-all dictionary",
+      "description": "Symbols become useful when they connect to your memory, feelings, and current life."
     },
     {
       "path": "/pricing",
-      "title": "Ancestral Path — Choose a conversation that fits the question"
+      "title": "Ancestral Path — Choose a conversation that fits the question",
+      "description": "Session lengths are shared as a guide so you can choose what feels comfortable before contacting us."
     },
     {
       "path": "/privacy",
-      "title": "Ancestral Path — Your story should be handled with care"
+      "title": "Ancestral Path — Your story should be handled with care",
+      "description": "A plain-language privacy note for visitors who contact Ancestral Path."
     },
     {
       "path": "/resources",
-      "title": "Ancestral Path — A library for the questions that stay with you"
+      "title": "Ancestral Path — A library for the questions that stay with you",
+      "description": "Practical prompts, gentle reading, and grounded ways to reflect between conversations."
     },
     {
       "path": "/services/ancestors/lineage",
-      "title": "Ancestral Path — A gentle entry into lineage work"
+      "title": "Ancestral Path — A gentle entry into lineage work",
+      "description": "You can begin with a name, a family story, a photograph, or simply a feeling of being called back."
     },
     {
       "path": "/services/dreams/follow-up",
-      "title": "Ancestral Path — What to do after a dream reading"
+      "title": "Ancestral Path — What to do after a dream reading",
+      "description": "Insight becomes useful when you give it a small place in ordinary life."
     },
     {
       "path": "/services/dreams/what-to-bring",
-      "title": "Ancestral Path — What to bring to a dream conversation"
+      "title": "Ancestral Path — What to bring to a dream conversation",
+      "description": "You only need the dream you remember and the feeling that made you want to ask about it."
     },
     {
       "path": "/services/love/communication",
-      "title": "Ancestral Path — Guidance for a clearer conversation"
+      "title": "Ancestral Path — Guidance for a clearer conversation",
+      "description": "Use reflection to decide what you need to say, ask, or stop carrying alone."
     },
     {
       "path": "/services/love/family",
-      "title": "Ancestral Path — When love and family are tangled"
+      "title": "Ancestral Path — When love and family are tangled",
+      "description": "A careful place to explore in-laws, family pressure, loyalty, and the peace you want at home."
     },
     {
       "path": "/services/prosperity/business",
-      "title": "Ancestral Path — Protect what you are building"
+      "title": "Ancestral Path — Protect what you are building",
+      "description": "Spiritual reflection can support a business decision when it stays connected to numbers, people, and action."
     },
     {
       "path": "/services/protection/grounding",
-      "title": "Ancestral Path — A simple grounding sequence"
+      "title": "Ancestral Path — A simple grounding sequence",
+      "description": "A three-minute practice for returning from a heavy moment to the room you are in."
     },
     {
       "path": "/services/protection/home",
-      "title": "Ancestral Path — Grounding practices for home"
+      "title": "Ancestral Path — Grounding practices for home",
+      "description": "Protection begins with creating a home rhythm that helps you feel present and steady."
     },
     {
       "path": "/terms",
-      "title": "Ancestral Path — The boundaries of spiritual guidance"
+      "title": "Ancestral Path — The boundaries of spiritual guidance",
+      "description": "These terms keep the service honest, respectful, and clear about what it is—and is not."
     }
   ]
 }
