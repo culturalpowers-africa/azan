@@ -25,6 +25,8 @@ assert.ok(!js.includes('campaignFlyer'), 'the services hub should not depend on 
 assert.match(js, /14 cultural service pathways|serviceCatalog/, 'the complete cultural service catalogue should be wired into the client');
 assert.match(js, /service-detail-page/, 'service detail pages should be wired into the client router');
 assert.match(js, /IntersectionObserver/, 'scroll-reveal motion should use an observer');
+assert.match(js, /canonicalizeBrowserPath/, 'repeated project prefixes should be canonicalized on load');
+assert.match(js, /while \(hasBasePrefix/, 'base stripping should collapse repeated prefixes');
 assert.match(js, /localStorage.*azan-theme|azan-theme.*localStorage/, 'theme preference should persist locally');
 assert.match(js, /library-count/, 'resource filtering should announce result counts');
 for (const imageName of ['heritage-hero.jpg', 'heritage-community.jpg', 'heritage-family.jpg', 'heritage-portrait.jpg', 'heritage-ritual.jpg']) {
